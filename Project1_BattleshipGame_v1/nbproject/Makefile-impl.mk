@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=TestPush
+PROJECTNAME=Project1_BattleshipGame_v1
 
 # Active Configuration
 DEFAULTCONF=Debug
