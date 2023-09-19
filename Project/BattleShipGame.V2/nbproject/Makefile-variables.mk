@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=battleshipgame.v1
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/battleshipgame.v1
+CND_ARTIFACT_NAME_Debug=battleshipgame.v2
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/battleshipgame.v2
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=battleshipgame.v1.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/battleshipgame.v1.tar
+CND_PACKAGE_NAME_Debug=battleshipgame.v2.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/battleshipgame.v2.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
-CND_ARTIFACT_NAME_Release=battleshipgame.v1
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/battleshipgame.v1
+CND_ARTIFACT_NAME_Release=battleshipgame.v2
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/battleshipgame.v2
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
-CND_PACKAGE_NAME_Release=battleshipgame.v1.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/battleshipgame.v1.tar
+CND_PACKAGE_NAME_Release=battleshipgame.v2.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/battleshipgame.v2.tar
 #
 # include compiler specific variables
 #
