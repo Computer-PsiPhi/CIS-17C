@@ -170,32 +170,14 @@ int main(int argc, char** argv) {
     stack<char> randRow;
     queue<int> randCol;
    
-  
-    
-    int t =0;
 
     randRow = randomRows();
     randCol = randomColumns();
-    char *o = fillOrientation();
     
-//    for(int i=0; i< 5; i++){
-//        char c = o[i];
-//        cout<<c<<" ";
-//    }
-   //orient = orientation();
+
     char ort[10] = {'H','V','H','V','H','V','H','V','H','V',};
      
     
-//    for(int i = 0; i<10; i++){
-//        char row = randRow.top();
-//        cout<<"row "<< row<<endl;
-//        
-//        int col = randCol.front();
-//        cout<<" "<<"col "<<col<<endl;
-//        randRow.pop();
-//        randCol.pop();
-//    }
-
     cout<<" Hello can this be cleared ";
 
       
@@ -221,7 +203,6 @@ int main(int argc, char** argv) {
     } // 
      
      
-     
 
      for (int i = 0 ; i < 5 ; i++){      
        for(int j = 0 ; j < B_SIZE ; j++){
@@ -235,16 +216,7 @@ int main(int argc, char** argv) {
             cout<<"[ "<<Grid[i][j]<<" ]";       
         }
     }
-//       
-//          for(int i = 0; i<10; i++){
-//        char row = randRow.top();
-//        cout<<"row "<< row<<endl;
-//        
-//        int col = randCol.front();
-//        cout<<" "<<"col "<<col<<endl;
-//        randRow.pop();
-//        randCol.pop();
-//    }
+
        
          char row = randRow.top();
         // cout<<"row "<< row<<endl;
@@ -264,7 +236,6 @@ int main(int argc, char** argv) {
         cout << "\n\nPlacing " << shipLength[i] << "-length ship"<<endl;
         
         cout << "Enter starting coordinates (e.g., A3): ";
-        
        
         //char
         cout<<"row "<<row;
@@ -272,8 +243,7 @@ int main(int argc, char** argv) {
        // cin >>row >> col;
         
        char x = row - 'A';
-       // cout<<"coords[]: "<<coords[0]<<endl;
-      //  cout<<" x coord[0]- 'A': "<<x<<endl;
+       
        int y = col;
       // cout<<"y coords coords[1]-'0': "<<y<<endl;
      
@@ -284,25 +254,21 @@ int main(int argc, char** argv) {
         cout << "Enter direction (H for horizontal, V for vertical): \n";
       //  cin >> direction;
         
-      //  t++;
-//      randRow.pop();
-//        randCol.pop();
-   
-   //  orient.pop();
+
         for(int j = 0 ; j < shipLength[i] ; j++)
         {    
              if((direction == 'V' || direction == 'v')){
                  Grid[x+j][y] = 'S';
             //     // cout<<Grid[x][j+y];
              }
-            // else
+          
             //     Grid[x][y+j] = 'S';
            //  cout<<"y+j: "<<(y+j)<<endl;
                  else if((direction == 'H' || direction == 'h')){
             //  cout<<"x in grid "<<x<<endl;
                // cout<<"y+j in drid: "<<(y+j)<<endl;
                 Grid[x][y+j] = 'S';
-                // cout<<Grid[x][j+y];
+                
             }
            
         }
@@ -312,7 +278,7 @@ int main(int argc, char** argv) {
 
     for(int i = 0; i < B_SIZE; i++){
         cout<<"\n";
-        // cout<<"\t";
+        
         cout << static_cast<char>('A' + i) <<"|";
         for(int j = 0; j < B_SIZE; j++){
 
@@ -320,8 +286,7 @@ int main(int argc, char** argv) {
         }
     }
        
-
-     delete[]o;
+     
     return 0;
 }
 
