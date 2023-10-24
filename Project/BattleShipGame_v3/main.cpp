@@ -1,12 +1,9 @@
 
 /* 
  * File:   main.cpp
- * Author: blott
- *
+ * Author: 
  * Created on August 21, 2023, 5:46 PM
  */
-
-
 #include <stack>
 #include <ctime>
 #include <list>
@@ -21,7 +18,6 @@
 using namespace std;
 
 #include "Board.h"
-
 
 queue<int> randomColumns(){
     
@@ -147,7 +143,6 @@ cout << "\033c";
 
 }
 
-
 void clearScreenChoice(){
     char choice = 0;
     cout<<"\n";
@@ -170,17 +165,13 @@ int main(int argc, char** argv) {
     stack<char> randRow;
     queue<int> randCol;
    
-
     randRow = randomRows();
     randCol = randomColumns();
     
-
     char ort[10] = {'H','V','H','V','H','V','H','V','H','V',};
-     
-    
-    cout<<" Hello can this be cleared ";
-
       
+    cout<<" Hello can this be cleared ";
+ 
     clearScreenChoice();
 
      const int B_SIZE = 10;
@@ -216,7 +207,6 @@ int main(int argc, char** argv) {
             cout<<"[ "<<Grid[i][j]<<" ]";       
         }
     }
-
        
          char row = randRow.top();
         // cout<<"row "<< row<<endl;
@@ -228,11 +218,9 @@ int main(int argc, char** argv) {
 //        char row;
 //        int col;
         char direction=ort[i];
-        t++;
 
       //  display();
    
-
         cout << "\n\nPlacing " << shipLength[i] << "-length ship"<<endl;
         
         cout << "Enter starting coordinates (e.g., A3): ";
@@ -245,10 +233,8 @@ int main(int argc, char** argv) {
        char x = row - 'A';
        
        int y = col;
-      // cout<<"y coords coords[1]-'0': "<<y<<endl;
-     
-       //direction = o[i];
-      
+      // cout<<"y "<<y<<endl;
+           
        cout<<"direction "<<direction<<endl;
        
         cout << "Enter direction (H for horizontal, V for vertical): \n";
@@ -267,10 +253,8 @@ int main(int argc, char** argv) {
                  else if((direction == 'H' || direction == 'h')){
             //  cout<<"x in grid "<<x<<endl;
                // cout<<"y+j in drid: "<<(y+j)<<endl;
-                Grid[x][y+j] = 'S';
-                
+                Grid[x][y+j] = 'S';   
             }
-           
         }
     }
      
