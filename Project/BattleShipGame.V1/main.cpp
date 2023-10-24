@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
     
     Board brd;
     
-     cout<<"\n";
+    cout<<"\n";
     cout<< "Board "<<"\n";
     
     brd.drawBoard();
