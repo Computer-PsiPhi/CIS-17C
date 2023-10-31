@@ -158,13 +158,13 @@ cout << "\033c";
 cout << endl;
 }
 
-bool isValid( char Grid[][10], int r, int c ,char o, int size){
+bool isValidPlacement( char Grid[][10], int r, int c ,char o, int size){
     
    // cout<<Grid[r][c];
-    cout<<"inFunc row "<<r<<endl;
-    cout<<"inFunc c "<<c<<endl;
-    cout<<"in Func orientation "<<o<<endl;
-    cout<<"in func size "<<size<<endl;
+//    cout<<"inFunc row "<<r<<endl;
+//    cout<<"inFunc c "<<c<<endl;
+//    cout<<"in Func orientation "<<o<<endl;
+//    cout<<"in func size "<<size<<endl;
 
     
     if(o == 'H' || o == 'h'){

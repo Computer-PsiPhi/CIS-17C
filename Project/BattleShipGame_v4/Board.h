@@ -20,7 +20,7 @@ public:
     Coordinates coord; 
     char Grid[B_SIZE][B_SIZE];
     
-    bool isValidPosition();
+    bool isValidPlacement( char Grid[][10], int r, int c ,char o, int size);
     
     Board();
     Board(const Board& orig);
