@@ -11,6 +11,10 @@
 
 class Coordinates {
 public:
+    
+    char row;
+    int col; 
+    
     Coordinates();
     Coordinates(const Coordinates& orig);
     virtual ~Coordinates();

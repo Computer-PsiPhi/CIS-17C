@@ -114,7 +114,7 @@ stack<char> randomRows(){
         a.push_back(rand()%10+65);
         rw.push(a.front());
         rw.push(*it); 
-       // rw.push(rand()%10+65);
+       rw.push(rand()%10+65);
       }
              
     return rw;
@@ -157,6 +157,36 @@ cout << "\033c";
 
 cout << endl;
 }
+
+bool isValid( char Grid[][10], int r, int c ,char o, int size){
+    
+   // cout<<Grid[r][c];
+    cout<<"inFunc row "<<r<<endl;
+    cout<<"inFunc c "<<c<<endl;
+    cout<<"in Func orientation "<<o<<endl;
+    cout<<"in func size "<<size<<endl;
+
+    
+    if(o == 'H' || o == 'h'){
+        for(int i =c; i< c +size; i++){
+            if(i >= B_SIZE || Grid[r][i] =='S'){
+                //cout<<"ship at :"<<Grid[r][i];
+               return false;
+            }
+        }
+            
+    }
+    else{
+        for(int j = r; j<  r+size; j++){
+            if(j >= B_SIZE || Grid[j][c] == 'S'){
+                //cout<<"ship there too"<<endl;
+               return false;
+            }
+        }
+    }
+   
+    return true;
+};
 
 int main(int argc, char** argv) {
     
@@ -226,11 +256,13 @@ int main(int argc, char** argv) {
         cout << "Enter starting coordinates (e.g., A3): ";
        
         //char
-        cout<<"row "<<row;
-        cout<<" col "<<col<<endl;
+        cout<<"249 row: "<<row;
+        cout<<" 250 col: "<<col<<endl;
        // cin >>row >> col;
         
-       char x = row - 'A';
+       int x = row - 'A';
+      
+       cout<<"x is "<<x<<endl;
        
        int y = col;
       // cout<<"y "<<y<<endl;
@@ -241,21 +273,35 @@ int main(int argc, char** argv) {
       //  cin >> direction;
         
         
+    bool t = isValid(Grid, x, y, direction, shipLength[i]);
+    cout<<boolalpha;
+    cout<<"is everything ok: "<<t<<endl;
 
         for(int j = 0 ; j < shipLength[i] ; j++)
         {   
+            
+        
+      //  if(isValid){
+            
              if((direction == 'V' || direction == 'v'))
              {
                  if(x+shipLength[i] < B_SIZE && Grid[x+j][y] != 'S')
                  Grid[x+j][y] = 'S';
+                 else
+                     cout<<"Not valid v";
              }
           
         
-            else if((direction == 'H' || direction == 'h' )){ 
+             if((direction == 'H' || direction == 'h' )){ 
                     
-                if(j+shipLength[i] < B_SIZE && Grid[x][y+j] != 'S')
+                 if(j+shipLength[i] < B_SIZE && Grid[x][y+j] != 'S')
                  Grid[x][y+j] = 'S';
+                 else
+                     cout<<"Not valid h";
                 // Grid[x][y+j] = 'S';   
+                 
+      //   }        
+                 
             }
         }
         
@@ -276,4 +322,3 @@ int main(int argc, char** argv) {
      
     return 0;
 }
-

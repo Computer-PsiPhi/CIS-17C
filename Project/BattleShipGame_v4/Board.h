@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/cppFiles/class.h to edit this template
- */
+
 
 /* 
  * File:   Board.h
@@ -10,11 +7,21 @@
  * Created on October 29, 2023, 9:16 PM
  */
 
+#include "Coordinates.h"
+
 #ifndef BOARD_H
 #define BOARD_H
 
+const int B_SIZE=10;
+
 class Board {
 public:
+    
+    Coordinates coord; 
+    char Grid[B_SIZE][B_SIZE];
+    
+    bool isValidPosition();
+    
     Board();
     Board(const Board& orig);
     virtual ~Board();
