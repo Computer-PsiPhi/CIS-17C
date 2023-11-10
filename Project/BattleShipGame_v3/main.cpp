@@ -283,8 +283,7 @@ int main(int argc, char** argv) {
         
       //  if(isValid){
             
-             if((direction == 'V' || direction == 'v'))
-             {
+             if((direction == 'V' || direction == 'v')) {
                  if(x+shipLength[i] < B_SIZE && Grid[x+j][y] != 'S')
                  Grid[x+j][y] = 'S';
                  else
@@ -304,6 +303,8 @@ int main(int argc, char** argv) {
                  
             }
         }
+    
+    
         
     }
      
