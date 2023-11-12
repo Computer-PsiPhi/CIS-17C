@@ -55,6 +55,8 @@ public:
  
  // Function 
 void insertCoord(int k , char row, int col, int s);
+
+ bool isShipAtCoord(int key, char row, int col) const ;
  
  // Function 
  set<pair<char, int>>& getCoordinates(int key);

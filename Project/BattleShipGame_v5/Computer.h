@@ -8,7 +8,9 @@
 #ifndef COMPUTER_H
 #define COMPUTER_H
 
-class Computer {
+#include "Player.h"
+
+class Computer: public Player {
 public:
     Computer();
     Computer(const Computer& orig);

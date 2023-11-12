@@ -7,6 +7,7 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H
+#include "Board.h"
 
 class Player {
 public:
@@ -14,6 +15,8 @@ public:
     Player(const Player& orig);
     virtual ~Player();
 private:
+    
+    Board board;
 
 };
 

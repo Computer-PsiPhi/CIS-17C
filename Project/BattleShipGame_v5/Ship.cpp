@@ -124,4 +124,9 @@ void::Ship::insertCoord(int k , char row, int col, int s) {
             cout << "\n";
         }
     }
-
+ 
+// Function to check if ship is at the given coordinates 
+ bool::Ship::isShipAtCoord(int key, char row, int col) const {
+        const set<pair<char, int>>& coordSet = shipCoords.at(key);
+        return coordSet.find(make_pair(row, col)) != coordSet.end();
+    }
