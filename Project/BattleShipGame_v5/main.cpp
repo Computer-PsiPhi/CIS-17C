@@ -1,15 +1,14 @@
-/* 
- * File:   main.cpp
+/*  File:   main.cpp
  * Author: Noel Perez
  * Created on October 29, 2023, 9:13 PM
  */
-
 #include <cstdlib>
+#include <string>
 
 #include "Board.h"
 #include "Coordinates.h"
 #include "Ship.h"
-#include <string>
+
 
 using namespace std;
 

@@ -1,5 +1,4 @@
-/* 
- * File:   Ship.cpp
+/* File:   Ship.cpp
  * Author: Noel Perez
  * Created on October 29, 2023, 9:17 PM
  */

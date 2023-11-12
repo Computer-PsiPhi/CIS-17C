@@ -1,8 +1,6 @@
-/* 
- * File:   Computer.h
+/* File:   Computer.h
  * Author: Noel Perez
- *
- * Created on November 9, 2023, 6:34 PM
+ * Created on November 1, 2023, 6:34 PM
  */
 
 #ifndef COMPUTER_H

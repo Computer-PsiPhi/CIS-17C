@@ -1,9 +1,6 @@
-
-/* 
- * File:   Game.h
+/*  File:   Game.h
  * Author: Noel Perez
- *
- * Created on November 9, 2023, 6:35 PM
+ * Created on November 1, 2023, 6:35 PM
  */
 
 #ifndef GAME_H

@@ -1,8 +1,6 @@
-/* 
- * File:   Computer.cpp
+/* File:   Computer.cpp
  * Author: Noel Perez
- * 
- * Created on November 9, 2023, 6:34 PM
+ * Created on November 1, 2023, 6:34 PM
  */
 
 #include "Computer.h"

@@ -1,7 +1,5 @@
-/* 
- * File:   Player.h
+/* File:   Player.h
  * Author: Noel 
- *
  * Created on October 29, 2023, 9:18 PM
  */
 

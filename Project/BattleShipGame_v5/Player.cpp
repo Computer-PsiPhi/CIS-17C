@@ -1,5 +1,4 @@
-/* 
- * File:   Player.cpp
+/* File:   Player.cpp
  * Author: Noel Perez
  * Created on October 29, 2023, 9:18 PM
  */
