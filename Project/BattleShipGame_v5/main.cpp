@@ -11,13 +11,10 @@
 #include "Computer.h"
 #include "Game.h"
 
-
 using namespace std;
 
 void clearScreen(){
-    
 cout << "\033c";
-
 }
 
 void clearScreenChoice(){

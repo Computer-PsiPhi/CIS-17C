@@ -30,9 +30,7 @@ public:
         }
     }
 
-    
-   
-    
+// Display 2 boards    
         cout << "\n";
     for(int k = 0 ; k < 2 ; k++){
               cout<<setw(9);
