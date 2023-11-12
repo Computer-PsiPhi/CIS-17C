@@ -5,7 +5,6 @@
  */
 #include "Ship.h"
 
-
 //Aircraft Carrier (occupies 5 spaces), Battleship (4), Cruiser (3), Submarine (3), and Destroyer (2).  
 Ship::Ship() {
   
@@ -20,7 +19,6 @@ Ship::Ship() {
     shipNO[2]=make_pair(names[2],'X');
     shipNO[3]=make_pair(names[3],'X');
     shipNO[4]=make_pair(names[4],'X');
-    
 }
 
 Ship::Ship(const Ship& orig) {
@@ -39,6 +37,7 @@ string Ship::getShipName(int index){
     }
   }
 
+// Set user position 
 void::Ship::setPostion(){
     
     Coordinates::getUserInput();
