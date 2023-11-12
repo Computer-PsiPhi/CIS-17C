@@ -2,6 +2,7 @@
  * Author: Noel Perez
  * Created on November 1, 2023, 6:34 PM
  */
+
 #include "Computer.h"
 
 Computer::Computer() {
@@ -30,9 +31,8 @@ void Computer::makeRandOrientation(int l, list<char>& list){
     // Move iterator to the second element
     it++;
     cout << "Second Element: " << *it << "\n";     
- 
 }
-
+// Get random rows from a queue for computer 
 queue<int> Computer::getRandCols(){
    
     int numElements=1000;
@@ -44,7 +44,7 @@ queue<int> Computer::getRandCols(){
     setCol.find(qCol.front());
     
     set<int>::iterator it;
-    
+   
     for(int i =0; i<numElements; i++){
        num[i] = rand()%10;
        int random = rand()%100;
@@ -60,10 +60,10 @@ queue<int> Computer::getRandCols(){
         q.pop();
     }
     delete []num;
-    
     return qCol;
 };
 
+// Get random rows from a stack for computer
 stack<char> Computer::getRandRows(){
         int numElements=1000;
 

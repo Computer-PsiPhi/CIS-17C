@@ -2,7 +2,6 @@
  * Author: Noel Perez
  * Created on November 1, 2023, 6:34 PM
  */
-
 #ifndef COMPUTER_H
 #define COMPUTER_H
 
@@ -29,6 +28,10 @@ queue<int> getRandCols();
 
 // Function 
 stack<char> getRandRows();
+
+void placeShips(){
+    
+}
   
 private:
 

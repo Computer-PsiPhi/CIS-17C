@@ -35,16 +35,7 @@ cout << endl;
 
 int main(int argc, char** argv) {
    
-    Ship s;
-    
-    Computer c;
-    
-    list<char> list;
-    int l =10;
-    c.makeRandOrientation(20,list);
-             
-    Game g;
-    g.displayBoards();
+ 
     return 0;
 }
 

@@ -15,19 +15,14 @@ using namespace std;
 class Coordinates {
     
  private:
-
     char row;
-    
     int col;
     
 public:
     
     Coordinates();
-    
     Coordinates(char row, int col);
-    
     Coordinates(const Coordinates& orig);
-    
     virtual ~Coordinates();
     
 //Structure with comparison operator for comparing sets and user input
