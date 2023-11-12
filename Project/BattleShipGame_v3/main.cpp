@@ -58,6 +58,7 @@ queue<int> randomColumns(){
     }
     
     delete []num;
+    
     return qCol;
 };
 
@@ -207,19 +208,22 @@ int main(int argc, char** argv) {
      const int B_SIZE = 10;
 
     int shipLength[5] = {2,3,3,4,5};
-    map<string,int> Map; 
-        Map["Ship1"] = 2;
-	Map["Ship2"] = 3;
-	Map["Ship3"] = 3;
-	Map["Ship4"] = 4;
-	Map["Ship5"] = 5;
+     map<int, pair<int, char>> ships;
+  //  map<ships ,pair<int,char>> stuff;
+
+    // Add ships and their information to the map using the [] operator
+    ships[0] = make_pair(5, 'C');
+    ships[1] = make_pair(4, 'B');
+    ships[2] = make_pair(3, 'R');
+    ships[3] = make_pair(3, 'S');
+    ships[4] = make_pair(2, 'D');
     
      char Grid[B_SIZE][B_SIZE];
 
    for(int r=0; r<B_SIZE; r++){
         
         for(int c=0; c<B_SIZE; c++){
-            Grid[r][c] = '-';
+            Grid[r][c] = '~';
         }
     } // 
      
@@ -273,7 +277,7 @@ int main(int argc, char** argv) {
       //  cin >> direction;
         
         
-    bool t = isValid(Grid, x, y, direction, shipLength[i]);
+    bool t = isValidPlacement(Grid, x, y, direction, shipLength[i]);
     cout<<boolalpha;
     cout<<"is everything ok: "<<t<<endl;
 
@@ -282,10 +286,11 @@ int main(int argc, char** argv) {
             
         
       //  if(isValid){
+         // cout<<"ships "<<ships[i].second<<endl;
             
              if((direction == 'V' || direction == 'v')) {
                  if(x+shipLength[i] < B_SIZE && Grid[x+j][y] != 'S')
-                 Grid[x+j][y] = 'S';
+                 Grid[x+j][y] = ships[i].second;
                  else
                      cout<<"Not valid v";
              }
@@ -294,7 +299,7 @@ int main(int argc, char** argv) {
              if((direction == 'H' || direction == 'h' )){ 
                     
                  if(j+shipLength[i] < B_SIZE && Grid[x][y+j] != 'S')
-                 Grid[x][y+j] = 'S';
+                 Grid[x][y+j] = ships[i].second;
                  else
                      cout<<"Not valid h";
                 // Grid[x][y+j] = 'S';   

@@ -3,10 +3,9 @@
  * Author: Noel Perez
  * Created on October 29, 2023, 9:16 PM
  */
-
 #include "Coordinates.h"
 
-
+// Coordinates Class 
 Coordinates::Coordinates() {
 }
 
@@ -24,53 +23,42 @@ Coordinates::Coordinates(const Coordinates& orig) {
 Coordinates::~Coordinates() {
 }
 
+char::Coordinates::getRow() const {
+        return row;
+    }
+
  void::Coordinates::setRow(char r) {
         row = r;
     }
 
-    // Getter function for col
+// Getter function for col
 int::Coordinates::getCol() const {
         return col;
     }
 
-    // Setter function for col
-    void::Coordinates::setCol(int c) {
+// Setter function for col
+void::Coordinates::setCol(int c) {
         col = c;
     }
 
-    // Member function to add a coordinate to the set
-    void::Coordinates::addCoordinate() {
-        getAllCoords().insert(make_pair(row, col));
-    }
-
-    // Member function to check if a set of coordinates exists in the set
-    bool::Coordinates::isInSet(const set<pair<char, int>>& coords) {
-        return getAllCoords() == coords;
-    }
-
-    // Member function to get the coordinates in the set
-   set<pair<char, int>>&::Coordinates::getAllCoords() {
-       
-        static set<pair<char, int>> allCoords;
-        return allCoords;
-    }
-
-    // Member function to print the coordinates in the set
-     void::Coordinates::printCoords() {
+// Member function to print the coordinates in the set
+void::Coordinates::printCoords() {
          
-        for (set<std::pair<char, int>>::iterator it = getAllCoords().begin(); it != getAllCoords().end(); ++it) {
+     for (set<pair<char, int>>::iterator it = getAllCoords().begin(); it != getAllCoords().end(); ++it) {
+         
             cout << "(" << it->first << ", " << it->second << ") ";
-        }
+     }
         cout << "\n";
     }
 
-    // Static member function to add coordinates to the set without creating an object
-     void::Coordinates::addCoordsToSet(char row, int col) {
+// Static member function to add coordinates to the set
+void::Coordinates::addCoordsToSet(char row, int col) {
+    
         getAllCoords().insert(make_pair(row, col));
     }
 
-    // Function to get user input for coordinates and add to the set
-     void::Coordinates::getUserInput() {
+// Function to get user input for coordinates and add to the set
+void::Coordinates::getUserInput() {
         char userRow;
         int userCol;
 
@@ -84,4 +72,10 @@ int::Coordinates::getCol() const {
         addCoordsToSet(userRow, userCol);
     }
     
+// Static  bool function to check if user input is in set
+bool::Coordinates::inputInSet(char userRow, int userCol) {
+         
+    return getAllCoords().find(std::make_pair(userRow, userCol)) != getAllCoords().end();
+    }
+
      
