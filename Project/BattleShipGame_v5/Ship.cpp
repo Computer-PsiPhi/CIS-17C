@@ -37,12 +37,22 @@ string Ship::getShipName(int index){
     }
   }
 
+ void::Ship::Hits(){
+    hits++; 
+ }
+
 // Set user position 
 void::Ship::setPostion(){
     
     Coordinates::getUserInput();
 }
 
+int::Ship::getShipLenght(int k){
+       map<int, pair<int, char>> &temp =this->getShips();
+       
+       return temp[k].first;
+   }
+ 
 // Return map that holds ship length and symbol
 map<int, pair<int, char>>&::Ship::getShips(){
         return ships;
@@ -85,7 +95,6 @@ void::Ship::insertCoord(int k , char row, int col, int s) {
 
         // Add coordinates to the specified ship length
         for (int i = 0; i < Length; ++i) {
-     
             shipCoords[k].insert(make_pair(row, col));
         }
  }

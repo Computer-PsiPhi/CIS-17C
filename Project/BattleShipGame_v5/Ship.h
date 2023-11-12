@@ -21,9 +21,14 @@ public:
    Ship(const Ship& orig);
    
    virtual ~Ship();
- 
+   
+   void Hits();
+   
 // add ship position to coordinates class    
  void setPostion();
+ 
+ // Get ship length
+  int getShipLenght(int k);
  
  // Get ships' names
  string getShipName(int index);
@@ -73,6 +78,7 @@ private:
    //Aircraft Carrier (occupies 5 spaces), Battleship (4), Cruiser (3), Submarine (3), and Destroyer (2).   
     string names[5]={"Destroyer", "Submarine", "Cruiser", "Battleship", "Aircraft Carrier"};
     
+    int hits;
 };
 
 #endif /* SHIP_H */
