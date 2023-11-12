@@ -62,7 +62,6 @@ bool::Board::isValidPlacement( char Grid[][10], int r, int c ,char o, int size){
             }
         }
     }
-   
     return true;
 }
 

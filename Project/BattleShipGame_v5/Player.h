@@ -14,10 +14,14 @@ public:
     Player();
     Player(const Player& orig);
     virtual ~Player();
-private:
     
+    void setName(string name);
+    string getName();
+    
+private:
+    string name;
     Board board;
-
+    
 };
 
 #endif /* PLAYER_H */

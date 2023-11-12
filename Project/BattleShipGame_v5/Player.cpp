@@ -15,3 +15,10 @@ Player::Player(const Player& orig) {
 Player::~Player() {
 }
 
+// Set player name
+ void::Player::setName(string name){
+     this->name=name;
+ }
+ string Player::getName(){
+     return this->name;
+ }
