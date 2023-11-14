@@ -12,19 +12,21 @@ const int B_SIZE=10;
 
 class Board {
 public:
+   Board();
+   Board(const Ship& orig);
+   virtual ~Board();
     
-    Board();
-    Board(const Board& orig);
-    virtual ~Board();
+    void displayBoard();
     
-    char Grid[B_SIZE][B_SIZE];
-    
-    bool isValidPlacement( char Grid[][B_SIZE], int r, int c ,char o, int size);
+    bool isValidPlacement( char **Grid, int r, int c ,char o, int size);
     
     bool isShipAtCoord(int key, char row, int col) const;
     
+    char** getGrid();
+    
 private:
 
+    char** Grid;
     Ship ship;
     
 };

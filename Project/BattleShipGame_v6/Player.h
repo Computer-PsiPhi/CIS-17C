@@ -9,17 +9,26 @@
 
 class Player {
 public:
+
     Player();
+    
+    
+    //   Player();
     Player(const Player& orig);
     virtual ~Player();
-    
+
     void setName(string name);
     string getName();
-    
-private:
+
+     void display(char **board );
+
+      void placeShips(char **board, Ship s);
+     
+protected:
     string name;
     Board board;
-    
+    Ship ship;
+
 };
 
 #endif /* PLAYER_H */

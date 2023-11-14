@@ -31,8 +31,9 @@ public:
     }
 
 // Display 2 boards    
+       
         cout << "\n";
-    for(int k = 0 ; k < 2 ; k++){
+    for(int k = 0 ; k < 2 ; k++){ // Column numbers
               cout<<setw(9);
                for(int col = 0 ; col < B_SIZE ; col++){
                 cout<<" "<<setw(4)<<col;
@@ -42,12 +43,12 @@ public:
             }
         cout << "\n";
 
-    for(int k = 0 ; k < 2 ; k++){
-            cout<<setw(4);
-            for(int j = 0 ; j < 10 ; j++){
-              cout<<setw(3); // moves row A
-            }
-        }
+//    for(int k = 0 ; k < 2 ; k++){
+//            cout<<setw(4);
+//            for(int j = 0 ; j < 10 ; j++){
+//              cout<<setw(3); // moves row A
+//            }
+//        }
     for(int i = 0 ; i < 10 ; i++){
             cout << "\t" << static_cast<char>('A' + i) << "|" ;
             for(int j = 0 ; j < 10 ; j++){ 
@@ -69,9 +70,7 @@ public:
     cout<<setw(21)<<"User Board ";
     cout<<setw(68)<<"Computer board";
     cout<<"\n";
-
     }
-    
     
 private:
     

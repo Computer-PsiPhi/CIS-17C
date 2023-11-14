@@ -34,8 +34,30 @@ cout << endl;
 
 
 int main(int argc, char** argv) {
+
+   
+    Player p;
+    
+    Ship s;
+    Board bo;
+    
+    Game g;
+   
+    
+   char** playerGrid = bo.getGrid();
+   
+   int a=1;
+   int b=2;
+   char c='V';
+   int d =3;
    
  
+   cout<<boolalpha;
+   // char Grid[][B_SIZE], int r, int c ,char o, int size
+  cout<< bo.isValidPlacement(playerGrid , a, b, c, d);
+  
+  p.placeShips(playerGrid, s);
+  
     return 0;
 }
 

@@ -6,6 +6,9 @@
 #include "Game.h"
 
 Game::Game() {
+    Player();
+    Computer();
+    Board();
 }
 
 Game::Game(const Game& orig) {
