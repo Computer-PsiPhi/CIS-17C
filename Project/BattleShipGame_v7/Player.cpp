@@ -365,7 +365,6 @@ bool::Player::hasLost()
 
 // edit
 void::Player::takeTurns(Player &opponent){
-    cout<<"IN PLAYER TAKE TURN "<<endl;
     int x, y;
     char r;
     int hits=0;

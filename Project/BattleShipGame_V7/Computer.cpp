@@ -313,7 +313,6 @@ void::Computer::placeShips() {
 }
 
 void::Computer::takeTurns(Player &opponent) {
-    cout<<"IN COMPUTER TAKE TURN "<<endl;
     int x, y;
     char r;
     int hits = 0;
