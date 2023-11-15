@@ -243,10 +243,9 @@ int main(int argc, char** argv) {
     }
        
          char row = randRow.top();
-        // cout<<"row "<< row<<endl;
-        
+       
         int col = randCol.front();
-       // cout<<" "<<"col "<<col<<endl;
+      
         randRow.pop();
         randCol.pop();
 //        char row;

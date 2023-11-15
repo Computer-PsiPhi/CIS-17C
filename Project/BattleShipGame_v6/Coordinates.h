@@ -19,7 +19,6 @@ class Coordinates {
     int col;
     
 public:
-    
     Coordinates();
     Coordinates(char row, int col);
     Coordinates(const Coordinates& orig);
@@ -55,30 +54,6 @@ static void getUserInput();
 // Static function to check if user input is in set
 static bool inputInSet(char userRow, int userCol);
    
-// Static member function to get the first element in the set
-static pair<char, int> getFirstCoord() {
-        
-        if (!getAllCoords().empty()) {
-            return *getAllCoords().begin();
-        } else {
-            // Return a default value 
-            return make_pair('\0', 0);
-        }
-    }
-
-//Static member function to get the second element in the set
-static pair<char, int> getSecondCoord() {
-        
-        if (getAllCoords().size() > 1) {
-            set<pair<char, int>>::iterator it = getAllCoords().begin();
-            ++it; // Move to the second element
-            return *it;
-        } else {
-            // Return a default value 
-            return make_pair('\0', 0);
-        }
-    }
- 
 // Static method to get all rows in set      
 static set<char> getAllRows() {
       set<char> rows;
@@ -107,7 +82,6 @@ static set<pair<char, int>, CompareCoordinates>& getAllCoords() {
         
         return allCoordinates;
     }
- 
 };
 
 #endif /* COORDINATES_H */

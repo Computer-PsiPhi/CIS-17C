@@ -14,29 +14,27 @@
 #include <stack>
 #include <queue>
 
-class Computer: public Player {
+class Computer : public Player {
 public:
     Computer();
     Computer(const Computer& orig);
     virtual ~Computer();
-    
-// Function   
-void makeRandOrientation(int l, list<char>& list);
 
-// Function
-queue<int> getRandCols();
+    // Function   
+    void makeRandOrientation(int l, list<char>& list);
 
-// Function 
-stack<char> getRandRows();
+    // Function
+    queue<int> getRandCols();
 
-void placeShips(){
+    // Function 
+    stack<char> getRandRows();
+
+    void placeShips();
     
-    
-    
-}
-  
+    void takeTurns(Player &opponent);
+
 private:
-
+     int randomChoice;
 };
 
 #endif /* COMPUTER_H */

@@ -21,7 +21,7 @@ public:
    
    virtual ~Ship();
    
-   void Hits();
+   int Hits();
    
 // add ship position to coordinates class    
  void setPostion();

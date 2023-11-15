@@ -7,6 +7,7 @@
 //Aircraft Carrier (occupies 5 spaces), Battleship (4), Cruiser (3), Submarine (3), and Destroyer (2).  
 
 Ship::Ship() {
+    hits=0;
     ships[0] = make_pair(2, 'D');
     ships[1] = make_pair(3, 'S');
     ships[2] = make_pair(3, 'C');
@@ -38,8 +39,9 @@ string Ship::getShipName(int index) {
     }
 }
 
-void::Ship::Hits() {
+int::Ship::Hits() {
     hits++;
+   return hits; 
 }
 
 // Set user position 
@@ -95,7 +97,7 @@ void::Ship::displayMapNO(map<int, pair<string, char>>&map) {
 }
 
 // Function to insert a set pair which are coordinates
-
+// k = key , row = board row, col = board col, s = ship size
 void::Ship::insertCoord(int k, char row, int col, int s) {
     // Check if ship size exceeds the maximum 
     int Size = shipCoords[k].size();
@@ -120,22 +122,17 @@ unordered_map<int, set<pair<char, int>>>&::Ship::getShipCoords() {
 }
 
 // Displays all ships coordinates
-
 void::Ship::printShipCoords() {
 
     for (unordered_map<int, set<pair<char, int>>>::iterator iter = shipCoords.begin(); iter != shipCoords.end(); iter++) {
-
         cout << names[iter->first] << " " << iter->first << ": ";
         //  cout << getShipName(iter->first)<< " "<<iter->first << ": ";
-
         for (set<pair<char, int>>::iterator setIter = iter->second.begin(); setIter != iter->second.end(); setIter++) {
-
             cout << "(" << setIter->first << ", " << setIter->second << ") ";
         }
         cout << "\n";
     }
 }
-
 // Function to check if ship is at the given coordinates 
 
 bool::Ship::isShipAtCoord(int key, char row, int col) const {
