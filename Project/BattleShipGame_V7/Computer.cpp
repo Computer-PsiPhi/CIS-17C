@@ -28,8 +28,8 @@ void Computer::makeRandOrientation(int l, list<char>& list) {
     // Merge two list
     merge(list.begin(), list.end(), fList.begin(), fList.end(), back_inserter(list));
 
-    std::list<char>::iterator it = list.begin();
-    cout << "First Element: " << *it << "\n";
+   // std::list<char>::iterator it = list.begin();
+   // cout << "First Element: " << *it << "\n";
     //
     //    // Move iterator to the second element
     //    it++;
@@ -149,8 +149,6 @@ void::Computer::placeShips() {
     }
 
 
-
-
     //   compBoard[0][0]='P';
     //   cout<<"Line 46 board.display "<<endl;
     //   board.displayBoard();
@@ -159,19 +157,19 @@ void::Computer::placeShips() {
     //   Computer::board.displayBoard();
     //   
     for (int i = 0; i < 5; i++) {
-        board.displayBoard();
+       // board.displayBoard();
         char r = randRow.top();
 
         int y = randCol.front();
-        cout << "\nrow is " << r << endl;
-        cout << "col is " << y << endl;
+     //   cout << "\nrow is " << r << endl;
+       // cout << "col is " << y << endl;
         randRow.pop();
         randCol.pop();
         it++;
         int x; // y;
         // char r;
         // r = direction;
-        cout << "in while " << direction << endl;
+     //   cout << "in while " << direction << endl;
 
         map<int, pair<int, char>> &itr = Computer::ship.getShips();
         map<int, pair<string, char>> &itr2 = Computer::ship.getShipNO();
@@ -185,20 +183,20 @@ void::Computer::placeShips() {
         cout << endl;
         cout << "\nPlacing " << itr2[i].first << " length " << itr[i].first << " ship.\n";
 
-        cout << "\nEnter starting coordinates (e.g., A3): ";
+    //    cout << "\nEnter starting coordinates (e.g., A3): ";
 
         // cin >> r>>y;
         r = toupper(r);
         x = r - 'A';
-        cout << "x is: " << x << endl;
+       // cout << "x is: " << x << endl;
         y = y;
-        cout << "y is " << y << endl;
+     //   cout << "y is " << y << endl;
 
         // Keep prompting until a valid input is provided
         while (true) {
 
-            cout << "in while " << direction << endl;
-            cout << "Enter direction (H for horizontal, V for vertical): ";
+          //  cout << "in while " << direction << endl;
+         //   cout << "Enter direction (H for horizontal, V for vertical): ";
             //  cin >> direction;
             direction = toupper(direction);
 
@@ -218,26 +216,26 @@ void::Computer::placeShips() {
             r = randRow.top();
 
             y = randCol.front();
-            cout << "\nrow is " << r << endl;
-            cout << "col is " << y << endl;
+//            cout << "\nrow is " << r << endl;
+//            cout << "col is " << y << endl;
             randRow.pop();
             randCol.pop();
             it++;
 
 
 
-            cout << "\nINVALID PLACEMENT! " << endl;
-            cout << "Re-enter starting coordinates for ";
-            cout << itr2[i].first << " length " << itr[i].first << " ship.\n";
+//            cout << "\nINVALID PLACEMENT! " << endl;
+//            cout << "Re-enter starting coordinates for ";
+//            cout << itr2[i].first << " length " << itr[i].first << " ship.\n";
 
             //cin >> r>>y;
             r = toupper(r);
 
             x = r - 'A';
-            cout << "x is: " << x << endl;
+         //   cout << "x is: " << x << endl;
             y = y;
-            cout << "y is " << y << endl;
-            cout << "Enter direction (H for horizontal, V for vertical): ";
+//            cout << "y is " << y << endl;
+//            cout << "Enter direction (H for horizontal, V for vertical): ";
             //  cin >> direction;
             direction = toupper(direction);
 
@@ -245,7 +243,7 @@ void::Computer::placeShips() {
                 randRow.pop();
                 randCol.pop();
                 it++;
-                cout << "Enter direction (H for horizontal, V for vertical): ";
+           //     cout << "Enter direction (H for horizontal, V for vertical): ";
                 //   cin >> direction;
                 direction = toupper(direction);
 
@@ -259,34 +257,34 @@ void::Computer::placeShips() {
                 cin.clear();
             }
         }
-        cout << boolalpha << endl;
-        cout << !(Computer::board.isValidPlacement(compBoard, x, y, direction, itr[i].first));
+    //    cout << boolalpha << endl;
+    //    cout << !(Computer::board.isValidPlacement(compBoard, x, y, direction, itr[i].first));
         while (!(Computer::board.isValidPlacement(compBoard, x, y, direction, itr[i].first))) {
 
 
             r = randRow.top();
 
             y = randCol.front();
-            cout << "\nrow is " << r << endl;
-            cout << "col is " << y << endl;
+         //   cout << "\nrow is " << r << endl;
+          //  cout << "col is " << y << endl;
             randRow.pop();
             randCol.pop();
             it++;
             direction = *it;
-            cout << "2nd while";
+          //  cout << "2nd while";
 
-            cout << "\nINVALID PLACEMENT! " << endl;
-            cout << "Re-enter starting coordinates for ";
-            cout << itr2[i].first << " length " << itr[i].first << " ship.\n";
+          //  cout << "\nINVALID PLACEMENT! " << endl;
+          //  cout << "Re-enter starting coordinates for ";
+         //   cout << itr2[i].first << " length " << itr[i].first << " ship.\n";
 
             // cin >> r>>y;
             r = toupper(r);
 
             x = r - 'A';
-            cout << "x is: " << x << endl;
+         //   cout << "x is: " << x << endl;
             y = y;
-            cout << "y is " << y << endl;
-            cout << "Enter direction (H for horizontal, V for vertical): ";
+         //   cout << "y is " << y << endl;
+         //   cout << "Enter direction (H for horizontal, V for vertical): ";
             //  cin >> direction;
             direction = toupper(direction);
         }
@@ -317,17 +315,17 @@ void::Computer::takeTurns(Player &opponent) {
     char r;
     int hits = 0;
     char **board = Computer::board.getGrid();
-
+    
     //char **board = opponent.board.getGrid();
-   // board[0][0] = 'S';
+    board[0][0] = 'K';
 
    Computer::board.displayBoard();
    cout<<endl;
     // opponent.board.displayBoard();
 
     //Player::ship.Hits();
-    do {
-     //   cout<<"\nIn computr turn fucn line 328: "<<endl;
+  //  do {
+        cout<<"\nIn computr turn fucn line 328: "<<endl;
       //  Computer::board.displayBoard();
         
       //  cout<<"IN computer take turn func "<<endl;
@@ -357,9 +355,9 @@ void::Computer::takeTurns(Player &opponent) {
 
        // char direction = *it;
         
-         char r = randRow.top();
+         r = randRow.top();
 
-        int y = randCol.front();
+        y = randCol.front();
       //  cout << "\nrow is " << r << endl;
       //  cout << "col is " << y << endl;
        
@@ -369,7 +367,7 @@ void::Computer::takeTurns(Player &opponent) {
 
       //  cin >> r >> y;
  cout << "Computer attack " <<  r <<" " << y << ". ";
-      int  x = r - 'A';
+        x = r - 'A';
         y = y;
 
 //        cout << "x is: " << x ;
@@ -411,7 +409,7 @@ void::Computer::takeTurns(Player &opponent) {
        // Computer::board.displayBoard();
         // opponent.board.displayBoard();
     }
-    } while (board[x][y] == '~' || board[x][y] == '~');
+  //  } while (board[x][y] == '~' || board[x][y] == '~');
     
     cout<<endl;
     Computer::board.displayBoard();

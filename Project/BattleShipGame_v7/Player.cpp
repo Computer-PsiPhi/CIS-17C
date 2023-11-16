@@ -171,16 +171,16 @@ void::Player::placeShips() {
         display(Player::board.getGrid());
 
         cout << endl;
-        cout << "\nPlacing " << itr2[i].first << " length " << itr[i].first << " ship.\n";
+        cout << "\nPlace " << itr2[i].first << " length " << itr[i].first << " ship.\n";
 
         cout << "\nEnter starting coordinates (e.g., A3): ";
         
         cin >> r>>y;
         r = toupper(r);
         x = r - 'A';
-        cout << "x is: " << x << endl;
+      //  cout << "x is: " << x << endl;
         y = y;
-        cout << "y is " << y << endl;
+      //  cout << "y is " << y << endl;
 
         // Keep prompting until a valid input is provided
         while (true) {
@@ -209,9 +209,9 @@ void::Player::placeShips() {
             r = toupper(r);
 
             x = r - 'A';
-            cout << "x is: " << x << endl;
+          //  cout << "x is: " << x << endl;
             y = y;
-            cout << "y is " << y << endl;
+          //  cout << "y is " << y << endl;
             cout << "Enter direction (H for horizontal, V for vertical): ";
             cin >> direction;
             direction = toupper(direction);
@@ -242,9 +242,9 @@ void::Player::placeShips() {
             r = toupper(r);
 
             x = r - 'A';
-            cout << "x is: " << x << endl;
+          //  cout << "x is: " << x << endl;
             y = y;
-            cout << "y is " << y << endl;
+          //  cout << "y is " << y << endl;
             cout << "Enter direction (H for horizontal, V for vertical): ";
             cin >> direction;
             direction = toupper(direction);
@@ -253,7 +253,7 @@ void::Player::placeShips() {
             if (direction == 'H' || direction == 'h') {
                 board.getGrid()[x][y + j] = itr[i].second;
                  Player::ship.insertCoord(i,r,y+j,itr[i].first);
-                 Player::ship.printShipCoords();
+                // Player::ship.printShipCoords();
             } else if (direction == 'V' || direction == 'v') {
                 board.getGrid()[x + j][y] = itr[i].second;
                  Player::ship.insertCoord(i,r+j,y,itr[i].first);
@@ -261,7 +261,10 @@ void::Player::placeShips() {
         } // for loop 79
 
         if(i==4){
-            display(Player::board.getGrid());
+       
+            Player::board.displayBoard();
+            cout<<"\n\nAll "<<Player::name<<" ships' coordinates:  "<<endl;
+            Player::ship.printShipCoords();
         } //}// else 77
     }// for loop 52
    
@@ -370,14 +373,15 @@ void::Player::takeTurns(Player &opponent){
     int hits=0;
    
    char **board = opponent.board.getGrid();
-    board[0][0] = 'S';
+    board[0][0] = 'P';
     
     opponent.board.displayBoard();
  
     //Player::ship.Hits();
-    do
-    {
-       cout << "Enter attack coordinates (e.g., A3): ";
+  //  do
+  //  {
+        cout<<"IN PLAYER TAKE TURN: "<<endl;
+       cout << "\nEnter attack coordinates (e.g., A3): ";
        
       cin >> r >> y;
 
@@ -388,7 +392,7 @@ void::Player::takeTurns(Player &opponent){
 
      cout << "y is " << y << endl;
 
-   } while(board[x][y] == '~' || board[x][y] =='X');
+//   } while(board[x][y] == '~' || board[x][y] =='X');
     cout << "You attack " << static_cast<char>('A' + x) << y << ". ";
 
     if (board[x][y] == 'A')
@@ -428,6 +432,7 @@ void::Player::takeTurns(Player &opponent){
         cout << "It's a miss.\n";
         board[x][y] = 'O';
         opponent.board.displayBoard();
+        
     }
-    //} while(opponent.board[x][y] == '~');
+  //}while(board[x][y] == '~' || board[x][y] =='X');
 }

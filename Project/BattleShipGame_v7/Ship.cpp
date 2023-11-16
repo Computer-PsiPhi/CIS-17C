@@ -125,7 +125,8 @@ unordered_map<int, set<pair<char, int>>>&::Ship::getShipCoords() {
 void::Ship::printShipCoords() {
 
     for (unordered_map<int, set<pair<char, int>>>::iterator iter = shipCoords.begin(); iter != shipCoords.end(); iter++) {
-        cout << names[iter->first] << " " << iter->first << ": ";
+        cout<<"\n";
+        cout << names[iter->first] << " : " ;//<< iter->first << ": ";
         //  cout << getShipName(iter->first)<< " "<<iter->first << ": ";
         for (set<pair<char, int>>::iterator setIter = iter->second.begin(); setIter != iter->second.end(); setIter++) {
             cout << "(" << setIter->first << ", " << setIter->second << ") ";

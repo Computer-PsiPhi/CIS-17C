@@ -58,7 +58,7 @@ int main(int argc, char** argv) {
    char c='V';
    int d =3;
    
-playerGrid[0][0]='S';
+playerGrid[0][0]='Y';
    
 //   cout<<boolalpha;
 //   // char Grid[][B_SIZE], int r, int c ,char o, int size
@@ -79,7 +79,7 @@ playerGrid[0][0]='S';
   
   g.setupGame();
   
-  clearScreen();
+//  clearScreen();
   g.playGame();
     // Create a Coordinate object
    // Coordinates myCoordinate;

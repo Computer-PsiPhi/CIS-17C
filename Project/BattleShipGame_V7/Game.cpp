@@ -76,7 +76,7 @@ void::Game::displayBoards(){
     
     
     string name;
-    cout << "\tEnter Player's Name : ";
+    cout << "\nEnter Player's Name : ";
     cin >> name;
     player.setName(name);
     
@@ -87,12 +87,12 @@ void::Game::displayBoards(){
     
    //clear();
     
-    cout << "\tComputer is placing its ships.\n";
+    cout << "\nComputer is placing its ships.\n";
      computer.placeShips();
     
   
 
-    cout << "\tGame is set up and ready to play!\n";
+    cout << "\nGame is set up and ready to play!\n";
     
    
      
@@ -106,8 +106,7 @@ void::Game::displayBoards(){
     
     char **compBoard = Game::board.getGrid();
 
-   
-    
+    opponent->getBoard();
     while(true){
         
            cout << "\n";
@@ -131,7 +130,7 @@ void::Game::displayBoards(){
             cout << "\t" << static_cast<char>('A' + i) << "|" ;
             for(int j = 0 ; j < 10 ; j++){ 
                 cout<<setw(1);
-                cout<<"[ "<<Game::board.getGrid()[i][j]<<" ]"; // player 
+                cout<<"[ "<<playerBoard[i][j]<<" ]"; // player 
             }
             cout<<setw(5);
            
@@ -145,8 +144,8 @@ void::Game::displayBoards(){
             }
             cout << "\n";
         }
-    cout<<setw(21)<<"User Board ";
-    cout<<setw(68)<<"Computer board";
+    cout<<setw(15)<<player.getName()<<" Board";//<<"User Board ";
+    cout<<setw(62)<<computer.getName()<<" Board";//<<"Computer board";
     cout<<"\n";
     
      cout << "\n" << currentPlayer->getName() << "'s Turn:\n";
