@@ -9,7 +9,7 @@
 class Player {
 public:
 
-    Player(): board(){};
+    Player();
    // Player(int rows, int cols) : board(rows, cols);
     
     //Player(const Player& orig);
@@ -38,7 +38,7 @@ protected:
     string name;
     Board board;
     Ship ship;
-
+   // char** Grid;
 };
 
 #endif /* PLAYER_H */

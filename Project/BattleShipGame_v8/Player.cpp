@@ -7,8 +7,16 @@
 #include <cctype>
 using namespace std;
 
-//Player::Player() {    
-//}
+Player::Player() {    
+//         Grid = new char*[B_SIZE];
+//        for (int i = 0; i < B_SIZE; ++i) {
+//            Grid[i] = new char[B_SIZE];
+//            for (int j = 0; j < B_SIZE; ++j) {
+//                Grid[i][j] = '~';
+//            }
+//        }
+//    
+}
 //Player::Player() : board {
 //} 
 
@@ -16,6 +24,11 @@ using namespace std;
 //}
 
 Player::~Player() {
+//     for (int i = 0; i < B_SIZE; ++i) {
+//            delete[] Grid[i];
+//        }
+//        delete[] Grid;
+//    
 }
 
 // Set player name
@@ -159,8 +172,8 @@ void::Player::placeShips() {
  // char **board = Player::board.getGrid();
      
     cout << name << ", Place your ships!" << endl;
-
-    for (int i = 0; i < 5; i++) {
+// MOVE BACK TO 5!
+    for (int i = 0; i < 1; i++) {
         int x, y;
         char r;
         char direction;
@@ -373,17 +386,22 @@ void::Player::takeTurns(Player &opponent){
     int hits=0;
    
    char **board = opponent.board.getGrid();
-    board[0][0] = 'P';
+ //   board[0][0] = 'P';
     
-    opponent.board.displayBoard();
+  //  cout<<"in Player turn func LIne 391"<<endl;
+   // opponent.board.displayBoard();
+    cout<<endl;
+   // cout<<"Player take turn line 394 "<<endl;
+   // Player::board.displayBoard();
  
     //Player::ship.Hits();
   //  do
   //  {
-        cout<<"IN PLAYER TAKE TURN: "<<endl;
+     //   cout<<"IN PLAYER TAKE TURN: "<<endl;
        cout << "\nEnter attack coordinates (e.g., A3): ";
        
       cin >> r >> y;
+      r=toupper(r);
 
       x = r - 'A';
       y = y;      
@@ -399,6 +417,7 @@ void::Player::takeTurns(Player &opponent){
     {
         cout << "It's a hit!\n";
        hits= Player::ship.Hits();
+       board[x][y] = 'X';
        //opponent.ship.isShipAtCoord(i,r,y) = 'X';
     }
     else if (board[x][y] == 'B')
@@ -418,21 +437,22 @@ void::Player::takeTurns(Player &opponent){
         cout << "It's a hit!\n";
        board[x][y] = 'X';
         hits= Player::ship.Hits();
-        opponent.board.displayBoard();
+      //  opponent.board.displayBoard();
     }
     else if (board[x][y] == 'S')
     {
        cout << "It's a hit!\n";
        board[x][y] = 'X';
         hits= Player::ship.Hits();
-        opponent.board.displayBoard();
+      //  opponent.board.displayBoard();
     }
      else if (board[x][y] == '~')
     {
         cout << "It's a miss.\n";
         board[x][y] = 'O';
-        opponent.board.displayBoard();
-        
+     //   opponent.board.displayBoard();
+       
     }
+   // cout<<"CALLED THE PLAYER TAKE TURN FUNCT"<<endl;
   //}while(board[x][y] == '~' || board[x][y] =='X');
 }

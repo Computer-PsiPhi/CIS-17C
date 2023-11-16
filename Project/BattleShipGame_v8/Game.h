@@ -27,7 +27,7 @@ private:
     
     Player player;
     Computer computer;
-    Board board;
+   // Board board;
 };
 
 #endif /* GAME_H */

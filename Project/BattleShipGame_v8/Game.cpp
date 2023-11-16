@@ -95,16 +95,23 @@ void::Game::displayBoards(){
     cout << "\nGame is set up and ready to play!\n";
     
    
-     
+//    computer.takeTurns(player);
+//    cout<<"line 99 "<<endl;
+//    player.display(player.getBoard());
+//    player.getBoard();
  }
  void::Game::playGame(){
      
     Player* currentPlayer = &player;
     Player* opponent = &computer;
     
-    char **playerBoard = Game::board.getGrid();
     
-    char **compBoard = Game::board.getGrid();
+    
+  //  char **playerBoard = Game::board.getGrid();
+    
+  //  Game::player.display(playerBoard);
+    
+  //  char **compBoard = Game::board.getGrid();
 
     opponent->getBoard();
     while(true){
@@ -130,17 +137,22 @@ void::Game::displayBoards(){
             cout << "\t" << static_cast<char>('A' + i) << "|" ;
             for(int j = 0 ; j < 10 ; j++){ 
                 cout<<setw(1);
-                cout<<"[ "<<playerBoard[i][j]<<" ]"; // player 
+                cout<<"[ "<<player.getBoard()[i][j]<<" ]"; // player 
             }
             cout<<setw(5);
            
             cout << "\t"<< static_cast<char>('A' + i) << "|" ;
     for(int j = 0 ; j < 10 ; j++){
-                if(Game::board.getGrid()[i][j] != 'S') {
-                    cout<<"[ "<<compBoard[i][j]<<" ]"; // compupter
+               if( computer.getBoard()[i][j] != 'A' && 
+                   computer.getBoard()[i][j] != 'B' &&
+                   computer.getBoard()[i][j] != 'C' &&
+                   computer.getBoard()[i][j] != 'D' &&
+                   computer.getBoard()[i][j] != 'S'    ) {
+                   cout<<"[ "<<computer.getBoard()[i][j]<<" ]"; // compupter
                 }
-                else 
-                    cout << '.' ;       
+                else {
+                    cout << "[ "<<'~'<<" ]" ;       
+                }
             }
             cout << "\n";
         }
@@ -150,7 +162,8 @@ void::Game::displayBoards(){
     
      cout << "\n" << currentPlayer->getName() << "'s Turn:\n";
         
-        currentPlayer->takeTurns(*opponent);
+       currentPlayer->takeTurns(*opponent);
+       //opponent->takeTurns(*currentPlayer);
 
         if (opponent->hasLost())
         {
@@ -160,6 +173,7 @@ void::Game::displayBoards(){
 
         
         swap(currentPlayer,opponent);
+   
     }
    
  }

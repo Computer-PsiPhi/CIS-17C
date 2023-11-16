@@ -314,18 +314,24 @@ void::Computer::takeTurns(Player &opponent) {
     int x, y;
     char r;
     int hits = 0;
-    char **board = Computer::board.getGrid();
-    
+   // char **board = Computer::board.getGrid();
+    char **board = opponent.getBoard();
+   
     //char **board = opponent.board.getGrid();
-    board[0][0] = 'K';
+    //board[0][0] = 'K';
 
-   Computer::board.displayBoard();
    cout<<endl;
+  //  cout<<"Computer.board.displayBoard line 323 "<<endl;
+  // Computer::board.displayBoard();
+   cout<<endl;
+   cout<<endl;
+  // cout<<"PLAYER::board.displayBoard() line 327;"<<endl;
+  // Player::board.displayBoard();
     // opponent.board.displayBoard();
 
     //Player::ship.Hits();
   //  do {
-        cout<<"\nIn computr turn fucn line 328: "<<endl;
+      //  cout<<"\nIn Computer turn func line 328: "<<endl;
       //  Computer::board.displayBoard();
         
       //  cout<<"IN computer take turn func "<<endl;
@@ -372,7 +378,7 @@ void::Computer::takeTurns(Player &opponent) {
 
 //        cout << "x is: " << x ;
 //        cout << " y is " << y << endl;
-
+        
 
     //} while (board[x][y] == 'O' || board[x][y] == 'O');
    
@@ -380,6 +386,7 @@ void::Computer::takeTurns(Player &opponent) {
     if (board[x][y] == 'A') {
         cout << "\nIt's a hit!\n";
         hits = Player::ship.Hits();
+        board[x][y] = 'X';
         //opponent.ship.isShipAtCoord(i,r,y) = 'X';
        // Computer::board.getGrid();
     } else if (board[x][y] == 'B') {
@@ -412,5 +419,6 @@ void::Computer::takeTurns(Player &opponent) {
   //  } while (board[x][y] == '~' || board[x][y] == '~');
     
     cout<<endl;
-    Computer::board.displayBoard();
+   // Computer::board.displayBoard();
+    //cout<<"CALLED THE COMPUTER TAKE TURNS FUNCTION "<<endl;
 }
