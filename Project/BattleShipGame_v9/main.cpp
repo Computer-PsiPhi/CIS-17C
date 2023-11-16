@@ -37,28 +37,25 @@ cout << endl;
 int main(int argc, char** argv) {
 
 
-    Player p;
+    Game game;
     
-    Ship s;
-    Board bo;
-    
-    Game g;
-    Computer comp;
+    game.setupGame();
+  
+   //  clearScreen();
+    game.playGame();
     
     
    
-    int h = s.Hits();
-    h=s.Hits();
-    h=s.Hits();
+   
    // cout<<"hits "<<h;
-   char** playerGrid = bo.getGrid();
+//   char** playerGrid = bo.getGrid();
    
    int a=1;
    int b=2;
    char c='V';
    int d =3;
    
-playerGrid[0][0]='Y';
+
    
 //   cout<<boolalpha;
 //   // char Grid[][B_SIZE], int r, int c ,char o, int size
@@ -77,10 +74,7 @@ playerGrid[0][0]='Y';
 //  comp.takeTurns(p);
 //  
   
-  g.setupGame();
-  
-//  clearScreen();
-  g.playGame();
+
     // Create a Coordinate object
    // Coordinates myCoordinate;
 //    myCoordinate.addCoordsToSet('A',9);
@@ -238,7 +232,7 @@ playerGrid[0][0]='Y';
 //      
 //       s.printShipCoords();
 //      // map for <size,symbol>
-     map<int, pair<int, char>> &itr = s.getShips();
+//     map<int, pair<int, char>> &itr = s.getShips();
 //      
 //      // map for <string name, char orientation>;
 //      map<int, pair<string,char>> &iter =s.getShipNO();

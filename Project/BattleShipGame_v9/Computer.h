@@ -30,11 +30,11 @@ public:
     stack<char> getRandRows();
 
     void placeShips();
-    
+
     void takeTurns(Player &opponent);
 
 private:
-     int randomChoice;
+    int randomChoice;
 };
 
 #endif /* COMPUTER_H */

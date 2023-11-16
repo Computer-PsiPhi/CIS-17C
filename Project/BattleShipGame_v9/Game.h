@@ -2,7 +2,6 @@
  * Author: Noel Perez
  * Created on November 1, 2023, 6:35 PM
  */
-
 #ifndef GAME_H
 #define GAME_H
 
@@ -17,17 +16,16 @@ public:
     Game();
     Game(const Game& orig);
     virtual ~Game();
-    
+
     void displayBoards();
-    
     void setupGame();
     void playGame();
-    
+
 private:
-    
+
     Player player;
     Computer computer;
-   // Board board;
+    // Board board;
 };
 
 #endif /* GAME_H */

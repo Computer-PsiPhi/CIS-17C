@@ -32,11 +32,12 @@ Board::~Board() {
         delete[] Grid;
 }
 
-  char**::Board::getGrid() {
+// Function 
+char**::Board::getGrid() {
         return Grid;
     }
 
-
+// Function 
 void::Board::displayBoard(){
         cout<<"\n";
     for(int j = 0 ; j < B_SIZE ; j++){ // Column numbers
@@ -52,6 +53,7 @@ void::Board::displayBoard(){
     }
 }
 
+// Function 
 bool::Board::isValidPlacement( char **Grid, int r, int c ,char o, int size){
     
     if(o == 'H' || o == 'h'){
