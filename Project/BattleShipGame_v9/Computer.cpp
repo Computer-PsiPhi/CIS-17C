@@ -33,7 +33,7 @@ void Computer::makeRandOrientation(int l, list<char>& list) {
 
 queue<int> Computer::getRandCols() {
 
-    int numElements = 1000;
+    int numElements = 5000;
     queue<int> qCol;
     queue<int> q;
     set<int> setCol;
@@ -64,7 +64,7 @@ queue<int> Computer::getRandCols() {
 // Function Get random rows from a stack for computer
 
 stack<char> Computer::getRandRows() {
-    int numElements = 1000;
+    int numElements = 5000;
 
     stack<char> rw; // = new stack<char>();
     stack<char> s; // = new stack<char>();
