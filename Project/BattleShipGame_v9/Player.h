@@ -8,12 +8,8 @@
 
 class Player {
 public:
-
     Player();
-    // Player(int rows, int cols) : board(rows, cols);
-
-    //Player(const Player& orig);
-
+    
     virtual ~Player();
 
     void setName(string name);
@@ -21,8 +17,6 @@ public:
     string getName();
 
     void display(char **board);
-
-    // void placeShips(char **board, Ship s); 
 
     void placeShips();
 
@@ -33,12 +27,13 @@ public:
     char **getBoard() {
         return board.getGrid();
     }
+    
+    void searchIndx(char**& board, int row, int col, char target);
 
 protected:
     string name;
     Board board;
     Ship ship;
-    // char** Grid;
 };
 
 #endif /* PLAYER_H */

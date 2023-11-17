@@ -77,6 +77,13 @@ stack<char> randomRows(){
         list<char> otherList;
         
         copy(data, data+10, inserter(otherList, otherList.begin()));
+        
+          list<char>::iterator itr = otherList.begin();
+      // copy(data, data + 10,  otherList.begin());
+        
+//       cout<<"IN function "<<endl;
+//         for (auto it = otherList.begin(); it != otherList.end(); ++it)
+//        cout << ' ' << *it;
        
     for (int i = 0; i<numElements; i++){
 
@@ -112,10 +119,13 @@ stack<char> randomRows(){
     }
         
     for(it = a.rbegin(); it!= a.rend(); it++){
-        a.push_back(rand()%10+65);
+         *it=rand()%10+65;
+        a.push_back(*it);
         rw.push(a.front());
         rw.push(*it); 
-       rw.push(rand()%10+65);
+        *it=rand()%10+65;
+       cout<<*it<<endl;
+       rw.push(*it);
       }
              
     return rw;

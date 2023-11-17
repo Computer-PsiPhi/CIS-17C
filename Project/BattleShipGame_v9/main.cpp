@@ -4,7 +4,9 @@
  */
 #include <cstdlib>
 #include <string>
-
+#include <deque>
+#include <fstream>
+#include <iterator>
 #include "Board.h"
 #include "Coordinates.h"
 #include "Ship.h"
@@ -21,7 +23,7 @@ cout << "\033c";
 void clearScreenChoice(){
     char choice = 0;
     cout<<"\n";
-cout << "Do you want to clear screen?"<<endl;
+cout << "Do you want to clear screen(Y/N)?"<<endl;
 cin>>choice;
 choice = toupper(choice);
 
@@ -33,10 +35,42 @@ cout << "\033c";
 cout << endl;
 }
 
+void printIntro()
+{
+    cout << "Welcome to the Battle Ship Game!\n";
+    cout << "================================\n";
+    cout << "1. You and the computer each have a game board with ships.\n";
+    cout << "2. You'll take turns to attack the opponent's board.\n";
+    cout << "3. Each player's board is marked with 'S' for ships, 'X' for hits,\n";
+    cout << "   and '*' for misses.\n";
+    cout << "4. To attack, enter coordinates (e.g., A3) and see if it's a hit or miss.\n";
+    cout << "5. The first player to sink all of the opponent's ships wins!\n";
+    cout << "6. Have fun and enjoy the game!\n";
+    cout << "================================\n";
+}
 
 int main(int argc, char** argv) {
 
+    // File with game rules
+    ifstream file("Rules.txt");
+    
+    // Test file open
+    if (!file.is_open()) {
+        cerr << "Failed to open the file." << endl;
+        return 1;
+    }
+    
+    // Deque with Random access iterator to get file stream
+    deque<char> text((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
 
+    // Display the rules in stored in a .txt file 
+    for (const char& words : text) {
+        cout << words;
+    }
+    cout << '\n';
+
+    clearScreenChoice();
+    
     Game game;
     
     game.setupGame();
@@ -174,15 +208,15 @@ int main(int argc, char** argv) {
 ////    
 ////     char userRow;
 ////    int userCol;
-////    std::cout << "Enter row : ";
-////    std::cin >> userRow;
-////    std::cout << "Enter col: ";
-////    std::cin >> userCol;
+////    cout << "Enter row : ";
+////    cin >> userRow;
+////    cout << "Enter col: ";
+////    cin >> userCol;
 ////
 ////    if (Coordinates::inputInSet(userRow, userCol)) {
-////        std::cout << "Entered coordinates are present in the set.\n";
+////        cout << "Entered coordinates are present in the set.\n";
 ////    } else {
-////        std::cout << "Entered coordinates are not present in the set.\n";
+////        cout << "Entered coordinates are not present in the set.\n";
 ////    }
 //
 //    
@@ -202,20 +236,20 @@ int main(int argc, char** argv) {
 //     
 //      s.addToMapNO(4,'V');
 //      
-//   //    std::map<int, pair<Coordinates, Coordinates::CompareCoordinates>> &shipItr = s.getShipMap();
+//   //    map<int, pair<Coordinates, Coordinates::CompareCoordinates>> &shipItr = s.getShipMap();
 //     
 //       
-////    std::unordered_map<int, std::set<std::pair<char, int>>>& shipCoords = s.getShipCoords();
-////    shipCoords[3].insert(std::make_pair('A', 6));
-////    shipCoords[3].insert(std::make_pair('B', 6));
-////      shipCoords[3].insert(std::make_pair('C', 6));
-////    shipCoords[3].insert(std::make_pair('D', 6));
+////    unordered_map<int, set<pair<char, int>>>& shipCoords = s.getShipCoords();
+////    shipCoords[3].insert(make_pair('A', 6));
+////    shipCoords[3].insert(make_pair('B', 6));
+////      shipCoords[3].insert(make_pair('C', 6));
+////    shipCoords[3].insert(make_pair('D', 6));
 ////    
-////    shipCoords[4].insert(std::make_pair('A', 1));
-////    shipCoords[4].insert(std::make_pair('A', 2));
-////     shipCoords[4].insert(std::make_pair('A', 3));
-////    shipCoords[4].insert(std::make_pair('A', 4));
-////    shipCoords[4].insert(std::make_pair('A', 5));
+////    shipCoords[4].insert(make_pair('A', 1));
+////    shipCoords[4].insert(make_pair('A', 2));
+////     shipCoords[4].insert(make_pair('A', 3));
+////    shipCoords[4].insert(make_pair('A', 4));
+////    shipCoords[4].insert(make_pair('A', 5));
 ////   
 ////    
 //    
@@ -281,9 +315,9 @@ int main(int argc, char** argv) {
 ////           cout<<"Enter column: ";
 ////           cin>>c;
 ////            if (Coordinates::inputInSet(r, c)) {
-////        std::cout << "Entered coordinates are present in the set.\n";
+////        cout << "Entered coordinates are present in the set.\n";
 ////    } else {
-////        std::cout << "Entered coordinates are not present in the set.\n";
+////        cout << "Entered coordinates are not present in the set.\n";
 ////    }
 ////    
 ////       }
@@ -291,15 +325,15 @@ int main(int argc, char** argv) {
 //            Coordinates::printCoords();
 //    
 //    if (Coordinates::inputInSet(r, c)) {
-//        std::cout << "Entered coordinates are present in the set.\n";
+//        cout << "Entered coordinates are present in the set.\n";
 //    } else {
-//        std::cout << "Entered coordinates are not present in the set.\n";
+//        cout << "Entered coordinates are not present in the set.\n";
 //    }
 //    
-////    for (std::set<std::pair<char, int>, Coordinates::CompareCoordinates>::iterator it = Ship::getAllShipCoords().begin(); it != Ship::getAllShipCoords().end(); ++it) {
-////        std::cout << "(" << it->first << ", " << it->second << ") ";
+////    for (set<pair<char, int>, Coordinates::CompareCoordinates>::iterator it = Ship::getAllShipCoords().begin(); it != Ship::getAllShipCoords().end(); ++it) {
+////        cout << "(" << it->first << ", " << it->second << ") ";
 ////    }
-////    std::cout << "\n";
+////    cout << "\n";
 ////  
 //            s.getShipName(4);
 //

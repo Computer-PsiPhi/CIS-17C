@@ -32,6 +32,8 @@ public:
     void placeShips();
 
     void takeTurns(Player &opponent);
+    
+    void searchIndx(char**& board, int row, int col, char target);
 
 private:
     int randomChoice;

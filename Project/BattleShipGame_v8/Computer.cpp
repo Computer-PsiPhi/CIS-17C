@@ -70,13 +70,14 @@ queue<int> Computer::getRandCols() {
 // Get random rows from a stack for computer
 
 stack<char> Computer::getRandRows() {
-    int numElements = 1000;
+    int numElements = 5000;
 
     stack<char> rw; // = new stack<char>();
     stack<char> s; // = new stack<char>();
     list<char> a;
     list<char> otherList;
     list<char>::reverse_iterator it;
+    
     char data[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
 
     copy(data, data + 10, inserter(otherList, otherList.begin()));
@@ -126,15 +127,10 @@ void::Computer::placeShips() {
     stack<char> randRow;
     queue<int> randCol;
 
-
-
-
-
     randRow = getRandRows(); //randomRows();
     randCol = getRandCols();
 
     makeRandOrientation(size, orientation);
-
 
     std::list<char>::iterator it = orientation.begin();
 

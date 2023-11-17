@@ -7,46 +7,25 @@
 #include <cctype>
 using namespace std;
 
-Player::Player() {
-    //         Grid = new char*[B_SIZE];
-    //        for (int i = 0; i < B_SIZE; ++i) {
-    //            Grid[i] = new char[B_SIZE];
-    //            for (int j = 0; j < B_SIZE; ++j) {
-    //                Grid[i][j] = '~';
-    //            }
-    //        }
-    //    
-}
-//Player::Player() : board {
-//} 
 
-//Player::Player(const Player& orig) {
-//}
+Player::Player(){
+} 
 
-Player::~Player() {
-    //     for (int i = 0; i < B_SIZE; ++i) {
-    //            delete[] Grid[i];
-    //        }
-    //        delete[] Grid;
-    //    
+Player::~Player() {   
 }
 
 // Set player name
-
 void::Player::setName(string name) {
     this->name = name;
 }
-// Get player name
 
+// Get player name
 string Player::getName() {
     return this->name;
 }
+
 // Display players board
-
 void::Player::display(char **board) {
-
-    //Player::board.getGrid();
-
     cout << "\n";
     for (int j = 0; j < B_SIZE; j++) { // Column numbers
         cout << setw(5) << j;
@@ -98,7 +77,7 @@ void::Player::placeShips() {
             if (direction == 'H' || direction == 'V') {
                 break; // Exit the loop if valid input is received
             } else {
-                cout << "Invalid input. Please enter 'H' or 'V'." << std::endl;
+                cout << "Invalid input. Please enter 'H' or 'V'." << endl;
             }
 
             // Clear the input buffer
@@ -130,7 +109,7 @@ void::Player::placeShips() {
                 if (direction == 'H' || direction == 'V') {
                     break; // Exit the loop if valid input is received
                 } else {
-                    cout << "Invalid input. Please enter 'H' or 'V'." << std::endl;
+                    cout << "Invalid input. Please enter 'H' or 'V'." << endl;
                 }
                 // Clear the input buffer
                 cin.clear();
@@ -178,7 +157,6 @@ void::Player::placeShips() {
 
 bool::Player::hasLost() {
     char **board = Player::board.getGrid();
-
     for (int i = 0; i < B_SIZE; i++) {
         for (int j = 0; j < B_SIZE; j++) {
             if (board[i][j] == 'A') {
@@ -199,13 +177,15 @@ bool::Player::hasLost() {
 
 
 // Function
-
 void::Player::takeTurns(Player &opponent) {
     int x, y;
     char r;
     int hits = 0;
 
     char **board = opponent.board.getGrid();
+
+    map<int, pair<int, char>> &itr = Player::ship.getShips();
+    map<int, pair<string, char>> &itr2 = Player::ship.getShipNO();
     //   board[0][0] = 'P';
 
     //  cout<<"in Player turn func LIne 391"<<endl;
@@ -231,37 +211,58 @@ void::Player::takeTurns(Player &opponent) {
     //  cout << "y is " << y << endl;
 
     //   } while(board[x][y] == '~' || board[x][y] =='X');
-    cout << "You attack " << static_cast<char> ('A' + x) << y << ". ";
+    cout << "You attack: " << static_cast<char> ('A' + x) << " " << y << " ";
 
     if (board[x][y] == 'A') {
-        cout << "It's a hit!\n";
-        hits = Player::ship.Hits();
-        board[x][y] = 'X';
-        //opponent.ship.isShipAtCoord(i,r,y) = 'X';
+        cout << "\nIt's a hit!\n";
+        cout << "You sunk the " << itr2[4].first;
+        opponent.searchIndx(board, 0, 0, 'A');
     } else if (board[x][y] == 'B') {
-        cout << "It's a hit!\n";
-        board[x][y] = 'X';
+        cout << "\nIt's a hit!\n";
+        cout << "You sunk the " << itr2[3].first;
         hits = Player::ship.Hits();
+        opponent.searchIndx(board, 0, 0, 'B');
     } else if (board[x][y] == 'C') {
-        cout << "It's a hit!\n";
-        board[x][y] = 'X';
+        cout << "\nIt's a hit!\n";
+        cout << "You sunk the " << itr2[2].first;
         hits = Player::ship.Hits();
+        opponent.searchIndx(board, 0, 0, 'C');
     } else if (board[x][y] == 'D') {
-        cout << "It's a hit!\n";
-        board[x][y] = 'X';
+        cout << "\nIt's a hit!\n";
+        cout << "You sunk the " << itr2[0].first;
         hits = Player::ship.Hits();
-        //  opponent.board.displayBoard();
+        opponent.searchIndx(board, 0, 0, 'D');
     } else if (board[x][y] == 'S') {
-        cout << "It's a hit!\n";
-        board[x][y] = 'X';
+        cout << "\nIt's a hit!\n";
+        cout << "You sunk the " << itr2[1].first;
         hits = Player::ship.Hits();
-        //  opponent.board.displayBoard();
+        opponent.searchIndx(board, 0, 0, 'S');
     } else if (board[x][y] == '~') {
-        cout << "It's a miss.\n";
+        cout << "\nIt's a miss.\n";
         board[x][y] = 'O';
-        //   opponent.board.displayBoard();
-
     }
-    // cout<<"CALLED THE PLAYER TAKE TURN FUNCT"<<endl;
-    //}while(board[x][y] == '~' || board[x][y] =='X');
+}
+
+void::Player::searchIndx(char**& board, int row, int col, char target) {
+    // Base case: Check if we've reached beyond the array bounds
+    if (row >= B_SIZE) {
+        return;
+    }
+
+    // Check if the character matches the target character
+    if (board[row][col] == target) {
+        // cout << "Character '" << target << "' found at [" << row << "][" << col << "]." << endl;
+        for (int i = 0; i < B_SIZE; i++) {
+            for (int j = 0; j < B_SIZE; j++) {
+                board[row][col] = 'X';
+            }
+        }
+    }
+
+    // Check the next index
+    if (col + 1 < B_SIZE) {
+        searchIndx(board, row, col + 1, target); // Move to the next column in the same row
+    } else {
+        searchIndx(board, row + 1, 0, target); // Move to the next row
+    }
 }

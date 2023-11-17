@@ -5,9 +5,9 @@
 #include "Ship.h"
 
 //Aircraft Carrier (occupies 5 spaces), Battleship (4), Cruiser (3), Submarine (3), and Destroyer (2).  
-
 Ship::Ship() {
     hits=0;
+    
     ships[0] = make_pair(2, 'D');
     ships[1] = make_pair(3, 'S');
     ships[2] = make_pair(3, 'C');
@@ -31,7 +31,6 @@ Ship::~Ship() {
 // Get ship names by index
 
 string Ship::getShipName(int index) {
-
     if (index >= 0 && index < 5) {
         return names[index];
     } else {
@@ -45,41 +44,33 @@ int::Ship::Hits() {
 }
 
 // Set user position 
-
 void::Ship::setPostion() {
-
     Coordinates::getUserInput();
 }
 
+// Function to return a ships length 
 int::Ship::getShipLenght(int k) {
     map<int, pair<int, char>> &temp = this->getShips();
-
     return temp[k].first;
 }
 
 // Return map that holds ship length and symbol
-
 map<int, pair<int, char>>&::Ship::getShips() {
     return ships;
 }
 
 // Return map that holds ship name and orientation 
-
 map<int, pair<string, char>>&::Ship::getShipNO() {
     return shipNO;
 }
 
 // Add orientation to ship by name 
-
 void::Ship::addToMapNO(int k, char o) {
-
     shipNO[k] = make_pair(names[k], o);
 }
 
 // Displays map with ship length and symbol 
-
 void::Ship::displayMap(map<int, pair<int, char>>&map) {
-
     for (int i = 0; i < 5; i++) {
         cout << ships[i].first;
         cout << ships[i].second << endl;
@@ -87,9 +78,7 @@ void::Ship::displayMap(map<int, pair<int, char>>&map) {
 }
 
 // Displays map with ship name and orientation data
-
 void::Ship::displayMapNO(map<int, pair<string, char>>&map) {
-
     for (int i = 0; i < 5; i++) {
         cout << shipNO[i].first << " ";
         cout << shipNO[i].second << endl;
@@ -110,23 +99,20 @@ void::Ship::insertCoord(int k, char row, int col, int s) {
 }
 
 // Function returns map key 
-
 set<pair<char, int>>&::Ship::getCoordinates(int key) {
     return shipCoords[key];
 }
 
 // Function returns map with set of pairs with ships coordinates
-
 unordered_map<int, set<pair<char, int>>>&::Ship::getShipCoords() {
     return shipCoords;
 }
 
 // Displays all ships coordinates
 void::Ship::printShipCoords() {
-
     for (unordered_map<int, set<pair<char, int>>>::iterator iter = shipCoords.begin(); iter != shipCoords.end(); iter++) {
         cout<<"\n";
-        cout << names[iter->first] << " : " ;//<< iter->first << ": ";
+        cout << names[iter->first] << " : " ;
         //  cout << getShipName(iter->first)<< " "<<iter->first << ": ";
         for (set<pair<char, int>>::iterator setIter = iter->second.begin(); setIter != iter->second.end(); setIter++) {
             cout << "(" << setIter->first << ", " << setIter->second << ") ";
@@ -134,8 +120,8 @@ void::Ship::printShipCoords() {
         cout << "\n";
     }
 }
-// Function to check if ship is at the given coordinates 
 
+// Function to check if ship is at the given coordinates 
 bool::Ship::isShipAtCoord(int key, char row, int col) const {
     const set<pair<char, int>>&coordSet = shipCoords.at(key);
     return coordSet.find(make_pair(row, col)) != coordSet.end();

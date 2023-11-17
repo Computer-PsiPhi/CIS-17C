@@ -17,6 +17,7 @@ Computer::Computer(const Computer& orig) {
 Computer::~Computer() {
 }
 
+// Function for generating random ship orientation choices for the computer
 void Computer::makeRandOrientation(int l, list<char>& list) {
     srand(static_cast<unsigned> (time(0)));
     forward_list<char> fList;
@@ -30,7 +31,6 @@ void Computer::makeRandOrientation(int l, list<char>& list) {
 }
 
 // Function get random rows from a queue for computer 
-
 queue<int> Computer::getRandCols() {
 
     int numElements = 5000;
@@ -61,8 +61,7 @@ queue<int> Computer::getRandCols() {
     return qCol;
 };
 
-// Function Get random rows from a stack for computer
-
+// Function Get random rows from a stack for computer ship placement and choices
 stack<char> Computer::getRandRows() {
     int numElements = 5000;
 
@@ -101,7 +100,8 @@ stack<char> Computer::getRandRows() {
         }
     }
     for (it = a.rbegin(); it != a.rend(); it++) {
-        a.push_back(rand() % 10 + 65);
+        *it=rand()%10+65;
+        a.push_back(*it);
         rw.push(a.front());
         rw.push(*it);
         rw.push(rand() % 10 + 65);
@@ -112,14 +112,14 @@ stack<char> Computer::getRandRows() {
 void::Computer::placeShips() {
     srand(static_cast<unsigned> (time(0)));
     char **compBoard = board.getGrid();
-    int i = 0;
+    int t = 0;
     int size = 10000;
 
     list<char> orientation;
     stack<char> randRow;
     queue<int> randCol;
 
-    randRow = getRandRows(); //randomRows();
+    randRow = getRandRows(); 
     randCol = getRandCols();
 
     makeRandOrientation(size, orientation);
@@ -128,44 +128,32 @@ void::Computer::placeShips() {
 
     char direction = *it;
 
-    while (i < randomChoice) {
+    while (t < randomChoice) {
         randRow.pop();
         randCol.pop();
         it++;
-        i++;
+        t++;
     }
 
 
     for (int i = 0; i < 5; i++) {
-        // board.displayBoard();
         char r = randRow.top();
-
         int y = randCol.front();
-        //   cout << "\nrow is " << r << endl;
-        // cout << "col is " << y << endl;
+      
         randRow.pop();
         randCol.pop();
         it++;
-        int x; // y;
+        int x; 
         // char r;
         // r = direction;
-        //   cout << "in while " << direction << endl;
 
         map<int, pair<int, char>> &itr = Computer::ship.getShips();
         map<int, pair<string, char>> &itr2 = Computer::ship.getShipNO();
 
-        // map<int, pair<int, char>> &itr = s.getShips();
-        // map<int, pair<string, char>> &itr2 = s.getShipNO();
-
-        //  display(board);
-        //   Computer::board.displayBoard();
-
         cout << endl;
         cout << "\nPlacing " << itr2[i].first << " length " << itr[i].first << " ship.\n";
 
-        //    cout << "\nEnter starting coordinates (e.g., A3): ";
-
-        // cin >> r>>y;
+       // cin >> r>>y;
         r = toupper(r);
         x = r - 'A';
         // cout << "x is: " << x << endl;
@@ -174,9 +162,7 @@ void::Computer::placeShips() {
 
         // Keep prompting until a valid input is provided
         while (true) {
-
-            //  cout << "in while " << direction << endl;
-            //   cout << "Enter direction (H for horizontal, V for vertical): ";
+            //  cout << "Enter direction (H for horizontal, V for vertical): ";
             //  cin >> direction;
             direction = toupper(direction);
 
@@ -194,23 +180,16 @@ void::Computer::placeShips() {
         while (x < 0 || x >= 10 || y < 0 || y > 10) {
 
             r = randRow.top();
-
             y = randCol.front();
-            //            cout << "\nrow is " << r << endl;
-            //            cout << "col is " << y << endl;
+          
             randRow.pop();
             randCol.pop();
             it++;
-
-
             //cin >> r>>y;
             r = toupper(r);
-
             x = r - 'A';
-            //   cout << "x is: " << x << endl;
             y = y;
-            //            cout << "y is " << y << endl;
-            //            cout << "Enter direction (H for horizontal, V for vertical): ";
+            // cout << "Enter direction (H for horizontal, V for vertical): ";
             //  cin >> direction;
             direction = toupper(direction);
 
@@ -218,8 +197,8 @@ void::Computer::placeShips() {
                 randRow.pop();
                 randCol.pop();
                 it++;
-                //     cout << "Enter direction (H for horizontal, V for vertical): ";
-                //   cin >> direction;
+                //  cout << "Enter direction (H for horizontal, V for vertical): ";
+                //  cin >> direction;
                 direction = toupper(direction);
 
                 // Check if the input is valid
@@ -290,6 +269,8 @@ void::Computer::takeTurns(Player &opponent) {
     int hits = 0;
     // char **board = Computer::board.getGrid();
     char **board = opponent.getBoard();
+     map<int, pair<int, char>> &itr = Player::ship.getShips();
+     map<int, pair<string, char>> &itr2 = Player::ship.getShipNO();
 
     //char **board = opponent.board.getGrid();
     //  cout<<"Computer.board.displayBoard line 323 "<<endl;
@@ -323,18 +304,18 @@ void::Computer::takeTurns(Player &opponent) {
     randCol.pop();
 
 
-    r = randRow.top();
+  //  r = randRow.top(); // UN COMMMENT
 
-    y = randCol.front();
-    //  cout << "\nrow is " << r << endl;
+  //  y = randCol.front();  // UN COMMENT
+    // cout << "\nrow is " << r << endl;
     //  cout << "col is " << y << endl;
 
     //  it++;
 
-    //cout << "\nEnter attack coordinates (e.g., A3): ";
+    cout << "\nEnter attack coordinates (e.g., A3): "; //TEST
 
-    //  cin >> r >> y;
-    cout << "Computer attack " << r << " " << y << ". ";
+      cin >> r >> y;  // TEST
+    cout << "Computer attack: " << r << " " << y << " ";
     x = r - 'A';
     y = y;
 
@@ -347,31 +328,57 @@ void::Computer::takeTurns(Player &opponent) {
 
     if (board[x][y] == 'A') {
         cout << "\nIt's a hit!\n";
+        cout<<itr2[4].first<<", length"<<itr[4].first<<" is sunk!"<<endl;
         hits = Player::ship.Hits();
-        board[x][y] = 'X';
+        for(int i=0; i<B_SIZE; i++){
+            for(int j=0; j<B_SIZE; j++){
+                if(board[i][j] == 'A'){
+                   board[i][j]='X';
+                }
+            }
+        }
         //opponent.ship.isShipAtCoord(i,r,y) = 'X';
-        // Computer::board.getGrid();
     } else if (board[x][y] == 'B') {
         cout << "\nIt's a hit!\n";
-        board[x][y] = 'X';
+        cout<<itr2[3].first<<", length"<<itr[3].first<<" is sunk!"<<endl;
         hits = Player::ship.Hits();
-        // Computer::board.displayBoard();
+        for(int i=0; i<B_SIZE; i++){
+            for(int j=0; j<B_SIZE; j++){
+                if(board[i][j] == 'B'){
+                    board[i][j]='X';
+                }
+            }
+        }
     } else if (board[x][y] == 'C') {
         cout << "\nIt's a hit!\n";
-        board[x][y] = 'X';
         hits = Player::ship.Hits();
+        for(int i=0; i<B_SIZE; i++){
+            for(int j=0; j<B_SIZE; j++){
+                if(board[i][j] == 'C'){
+                    board[i][j]='X';
+                }
+            }
+        }
     } else if (board[x][y] == 'D') {
         cout << "\nIt's a hit!\n";
-        board[x][y] = 'X';
-        hits = Player::ship.Hits();
-        // Computer::board.displayBoard();
-        //opponent.board.displayBoard();
+      //  opponent.searchIndx(board, 0, 0,'D');
+           for(int i=0; i<B_SIZE; i++){
+            for(int j=0; j<B_SIZE; j++){
+                if(board[i][j] == 'D'){
+                    board[i][j]='X';
+                }
+            }
+        }
     } else if (board[x][y] == 'S') {
         cout << "\nIt's a hit!\n";
-        board[x][y] = 'X';
         hits = Player::ship.Hits();
-        //  Computer::board.displayBoard();
-        //  opponent.board.displayBoard();
+        for(int i=0; i<B_SIZE; i++){
+            for(int j=0; j<B_SIZE; j++){
+                if(board[i][j] == 'S'){
+                    board[i][j]='X';
+                }
+            }
+        }
     } else if (board[x][y] == '~') {
         cout << "\nIt's a miss.\n";
         board[x][y] = 'O';
@@ -383,4 +390,35 @@ void::Computer::takeTurns(Player &opponent) {
 
     // Computer::board.displayBoard();
     //cout<<"CALLED THE COMPUTER TAKE TURNS FUNCTION "<<endl;
+   // opponent.display(board);
 }
+
+//// Function
+//void::Computer::searchIndx(char**& board, int row, int col, char target) {
+//      
+//    // Base case: Check if we've reached beyond the array bounds
+//    if (row >= B_SIZE) {
+//        return;
+//    }
+//
+//    // Check if the character matches the target character
+//    if (board[row][col] == target) {
+//       
+//      
+//        cout << "Character '" << target << "' found at [" << row << "][" << col << "]." << endl;
+//        for(int i=0; i<B_SIZE; i++){
+//            for(int j=0; j<B_SIZE; j++){
+//                   board[row][col] = 'X';
+//            }
+//        }
+//        
+//       return;
+//    }
+//
+//    // Check the next index
+//    if (col + 1 < B_SIZE) {
+//        searchIndx(board, row, col + 1, target); // Move to the next column in the same row
+//    } else {
+//        searchIndx(board, row + 1, 0, target); // Move to the next row
+//    }
+//}
