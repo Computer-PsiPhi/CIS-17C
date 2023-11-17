@@ -52,10 +52,10 @@ public:
     // Function to get user input for coordinates and add to the set
     static void getUserInput();
 
-   // Static function to check if user input is in set
+    // Static function to check if user input is in set
     static bool inputInSet(char userRow, int userCol);
 
-   // Static method to get all rows in set      
+    // Static method to get all rows in set      
     static set<char> getAllRows() {
         set<char> rows;
         for (set<pair<char, int>>::iterator it = getAllCoords().begin(); it != getAllCoords().end(); ++it) {
@@ -64,7 +64,7 @@ public:
         return rows;
     }
 
-   //Static method to get all columns in set
+    //Static method to get all columns in set
     static set<int> getAllColumns() {
 
         set<int> columns;
@@ -76,11 +76,9 @@ public:
         return columns;
     }
 
-   // Static function named that returns a reference to the set of pairs.
+    // Static function named that returns a reference to the set of pairs.
     static set<pair<char, int>, CompareCoordinates>& getAllCoords() {
-
         static set<pair<char, int>, CompareCoordinates> allCoordinates;
-
         return allCoordinates;
     }
 };

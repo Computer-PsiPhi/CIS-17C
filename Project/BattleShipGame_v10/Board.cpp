@@ -5,7 +5,7 @@
 #include "Board.h"
 
 Board::Board() {
-    
+ 
         Grid = new char*[B_SIZE];
         for (int i = 0; i < B_SIZE; ++i) {
             Grid[i] = new char[B_SIZE];
@@ -13,13 +13,6 @@ Board::Board() {
                 Grid[i][j] = '~';
             }
         }
-    
-//    for(int r=0; r<B_SIZE; r++){
-//        
-//        for(int c=0; c<B_SIZE; c++){
-//            Grid[r][c] = '~';
-//        }
-//    }
 }
 
 Board::Board(const Ship& orig){
@@ -52,12 +45,10 @@ void::Board::displayBoard(){
         }
     }
 }
-
 // Function 
 bool::Board::isValidPlacement( char **Grid, int r, int c ,char o, int size){
     
     if(o == 'H' || o == 'h'){
-        
         for(int i =c; i< c +size; i++){
             if(i >= B_SIZE || Grid[r][i] =='A'){
                return false;
@@ -98,7 +89,6 @@ bool::Board::isValidPlacement( char **Grid, int r, int c ,char o, int size){
     }
     return true;
 }
-
 // Bool function to check if there is a ship at coordinate
 bool::Board::isShipAtCoord(int key, char row, int col) const {
         return ship.isShipAtCoord(key, row, col);

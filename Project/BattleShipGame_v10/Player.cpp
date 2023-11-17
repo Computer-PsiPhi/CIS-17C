@@ -7,10 +7,9 @@
 #include <cctype>
 using namespace std;
 
-
 Player::Player(){
 } 
-
+// Destructor
 Player::~Player() {   
 }
 
@@ -41,8 +40,6 @@ void::Player::display(char **board) {
 }
 
 void::Player::placeShips() {
-    // char **board = Player::board.getGrid();
-
     cout << name << ", Place your ships!" << endl;
     // MOVE BACK TO 5!
     for (int i = 0; i < 1; i++) {
@@ -57,48 +54,43 @@ void::Player::placeShips() {
 
         cout << endl;
         cout << "\nPlace " << itr2[i].first << " length " << itr[i].first << " ship.\n";
-
         cout << "\nEnter starting coordinates (e.g., A3): ";
 
         cin >> r>>y;
+        
         r = toupper(r);
         x = r - 'A';
-        //  cout << "x is: " << x << endl;
         y = y;
-        //  cout << "y is " << y << endl;
-
+        
         // Keep prompting until a valid input is provided
         while (true) {
             cout << "Enter direction (H for horizontal, V for vertical): ";
             cin >> direction;
             direction = toupper(direction);
-
             // Check if the input is valid
             if (direction == 'H' || direction == 'V') {
                 break; // Exit the loop if valid input is received
             } else {
                 cout << "Invalid input. Please enter 'H' or 'V'." << endl;
             }
-
             // Clear the input buffer
             cin.clear();
         }
 
         while (x < 0 || x >= 10 || y < 0 || y > 10) {
-
             cout << "\nINVALID PLACEMENT! " << endl;
             cout << "Re-enter starting coordinates for ";
             cout << itr2[i].first << " length " << itr[i].first << " ship.\n";
 
-            cin >> r>>y;
+            cin >> r >> y; // user input of rows and columns
+            
             r = toupper(r);
-
             x = r - 'A';
-            //  cout << "x is: " << x << endl;
             y = y;
-            //  cout << "y is " << y << endl;
             cout << "Enter direction (H for horizontal, V for vertical): ";
-            cin >> direction;
+            
+            cin >> direction; // user inpur ship orientation
+            
             direction = toupper(direction);
             while (true) {
                 cout << "Enter direction (H for horizontal, V for vertical): ";
@@ -115,21 +107,17 @@ void::Player::placeShips() {
                 cin.clear();
             }
         }
-
+// Check if ship placement is valid: not overlapping or over the board edge
         while (!(Player::board.isValidPlacement(Player::board.getGrid(), x, y, direction, itr[i].first))) {
-            cout << "2nd whie";
-
             cout << "\nINVALID PLACEMENT! " << endl;
             cout << "Re-enter starting coordinates for ";
             cout << itr2[i].first << " length " << itr[i].first << " ship.\n";
 
             cin >> r>>y;
+            
             r = toupper(r);
-
             x = r - 'A';
-            //  cout << "x is: " << x << endl;
             y = y;
-            //  cout << "y is " << y << endl;
             cout << "Enter direction (H for horizontal, V for vertical): ";
             cin >> direction;
             direction = toupper(direction);
@@ -146,15 +134,14 @@ void::Player::placeShips() {
         } // for loop 79
 
         if (i == 4) {
-
             Player::board.displayBoard();
             cout << "\n\nAll " << Player::name << " ships' coordinates:  " << endl;
             Player::ship.printShipCoords();
-        } //}// else 77
+        } // else 77
     }// for loop 52
 
 }
-
+// Bool function to determine if ships are still on board
 bool::Player::hasLost() {
     char **board = Player::board.getGrid();
     for (int i = 0; i < B_SIZE; i++) {
@@ -174,43 +161,24 @@ bool::Player::hasLost() {
     }
     return true;
 }
-
-
-// Function
+// Function: Overloaded for switching players turns
 void::Player::takeTurns(Player &opponent) {
     int x, y;
     char r;
     int hits = 0;
 
     char **board = opponent.board.getGrid();
-
     map<int, pair<int, char>> &itr = Player::ship.getShips();
     map<int, pair<string, char>> &itr2 = Player::ship.getShipNO();
-    //   board[0][0] = 'P';
-
-    //  cout<<"in Player turn func LIne 391"<<endl;
-    // opponent.board.displayBoard();
-
-    // cout<<"Player take turn line 394 "<<endl;
-    // Player::board.displayBoard();
-
-    //Player::ship.Hits();
-    //  do
-    //  {
-    //   cout<<"IN PLAYER TAKE TURN: "<<endl;
+   
     cout << "\nEnter attack coordinates (e.g., A3): ";
 
     cin >> r >> y;
+    
     r = toupper(r);
-
     x = r - 'A';
     y = y;
 
-    //   cout << "x is: " << x << endl;
-
-    //  cout << "y is " << y << endl;
-
-    //   } while(board[x][y] == '~' || board[x][y] =='X');
     cout << "You attack: " << static_cast<char> ('A' + x) << " " << y << " ";
 
     if (board[x][y] == 'A') {
@@ -248,7 +216,6 @@ void::Player::searchIndx(char**& board, int row, int col, char target) {
     if (row >= B_SIZE) {
         return;
     }
-
     // Check if the character matches the target character
     if (board[row][col] == target) {
         // cout << "Character '" << target << "' found at [" << row << "][" << col << "]." << endl;
@@ -258,7 +225,6 @@ void::Player::searchIndx(char**& board, int row, int col, char target) {
             }
         }
     }
-
     // Check the next index
     if (col + 1 < B_SIZE) {
         searchIndx(board, row, col + 1, target); // Move to the next column in the same row

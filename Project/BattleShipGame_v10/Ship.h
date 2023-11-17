@@ -68,6 +68,7 @@ public:
 
 private:
 
+    // 2D MAP for ship type and coordinates
     unordered_map<int, set<pair<char, int>> > shipCoords;
 
     // Map for ship length and symbol
@@ -79,7 +80,7 @@ private:
     //Aircraft Carrier (occupies 5 spaces), Battleship (4), Cruiser (3), Submarine (3), and Destroyer (2).   
     string names[5] = {"Destroyer", "Submarine", "Cruiser", "Battleship", "Aircraft Carrier"};
 
-    int hits;
+    int hits; // hits of each ship
 };
 
 #endif /* SHIP_H */

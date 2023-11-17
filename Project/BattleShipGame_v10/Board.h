@@ -25,10 +25,8 @@ public:
     char** getGrid();
 
 private:
-
     char** Grid;
     Ship ship;
-
 };
 
 #endif /* BOARD_H */

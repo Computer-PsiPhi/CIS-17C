@@ -22,10 +22,8 @@ public:
     void playGame();
 
 private:
-
     Player player;
     Computer computer;
-    // Board board;
 };
 
 #endif /* GAME_H */
