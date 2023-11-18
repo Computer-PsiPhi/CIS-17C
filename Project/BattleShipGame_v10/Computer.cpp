@@ -223,7 +223,7 @@ void::Computer::placeShips() {
             }
         } // for loop 79
     }// for loop 52
-    board.displayBoard(); // Display after Computer sets board. Un-comment to see Computer Board
+ //   board.displayBoard(); // Display after Computer sets board. Un-comment to see Computer Board
     cout << endl;
 }
 
@@ -251,12 +251,12 @@ void::Computer::takeTurns(Player &opponent) {
     randRow.pop();
     randCol.pop();
 
-    cout << "\nEnter attack coordinates (e.g., A3): "; //TEST
-
-    cin >> r >> y;  // TEST
-    cout << "Computer attack: " << r << " " << y << " ";
+   // cout << "\nEnter attack coordinates (e.g., A3): "; //TEST - Uncomment to test input
+   // cin >> r >> y;  // TEST Uncomment to test input
+    r = randRow.top();
     x = r - 'A';
-    y = y;
+    y = randCol.back();
+    cout << "Computer attacks: " << r << " " << y;
 
     if (board[x][y] == 'A') {
         cout << "\nIt's a hit!\n";

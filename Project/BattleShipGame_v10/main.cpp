@@ -47,7 +47,6 @@ int main(int argc, char** argv) {
     // Deque with Random access iterator to get file stream
     deque<char> text((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
 
-  
     int choice = 0;
 
     while (choice != 3) {
@@ -72,7 +71,6 @@ int main(int argc, char** argv) {
             }
             cout << '\n';
             clearScreenChoice();
-            
         } else if (choice == 2) {
             Coordinates c;
             Game game;
@@ -84,7 +82,6 @@ int main(int argc, char** argv) {
         } else {
             cout << "Invalid choice. Please enter a number between 1 and 3." << endl;
         }
-
         cin.ignore(100, '\n'); // Clear the input buffer
     }
 

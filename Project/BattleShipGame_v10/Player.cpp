@@ -42,7 +42,7 @@ void::Player::display(char **board) {
 void::Player::placeShips() {
     cout<<"\n" << name << ", Place your ships!" << endl;
     // MOVE BACK TO 5!
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < 5; i++) {
         int x, y;
         char r;
         char direction;
@@ -134,7 +134,7 @@ void::Player::placeShips() {
 
         if (i == 4) {
             Player::board.displayBoard();
-            cout << "\n\nAll " << Player::name << " ships' coordinates:  " << endl;
+            cout << "\n\nAll " << Player::name << "'s ships coordinates: " << endl;
             Player::ship.printShipCoords();
         } // else 77
     }// for loop 52

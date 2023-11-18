@@ -5,6 +5,7 @@
 
 #include "Game.h"
 #include <algorithm>
+#include <string>
 
 Game::Game() {
     Player();
@@ -26,21 +27,22 @@ void::Game::pause() {
 
 void::Game::setupGame() {
     string name;
+    cin.ignore(100,'\n');
     cout << "\nEnter Player's Name : ";
-    cin >> name;
+    getline(cin,name);
     player.setName(name);
 
     player.placeShips();
-
-
-    computer.setName("Computer");
     pause();
+    computer.setName("Computer");
+    
     cout << "\nComputer is placing its ships" << endl;
     computer.placeShips();
-
+    
     cout << endl;
     int x = 1;
     cout << "\nGame is set up and ready to play!" << endl;
+
     cout << endl << setw(7) << ' ' << "Press ENTER to continue: \n";
     cin.get();
 }
@@ -88,10 +90,10 @@ void::Game::playGame() {
 
         cout << "\n" << currentPlayer->getName() << "'s Turn:\n";
 
-
+     
         currentPlayer->takeTurns(*opponent);
 
-        // pause();
+        
         if (opponent->hasLost()) {
             cout << endl;
             pause();
@@ -99,7 +101,15 @@ void::Game::playGame() {
             cout << "All of " << opponent->getName() << "'s ships are sunk!" << endl;
             break;
         }
-        pause();
+//     cout << endl << setw(7) << ' ' << "Press ENTER to continue:\n";
+//     cin.get();
+          if(currentPlayer->getName() == "Computer") {
+           cout << endl << setw(7) << ' ' << "Press ENTER to continue:\n";
+           cin.get();
+       }else{
+              pause();
+       }
+        // SWAP PLAYERS
         swap(currentPlayer, opponent);
     }
     /*
