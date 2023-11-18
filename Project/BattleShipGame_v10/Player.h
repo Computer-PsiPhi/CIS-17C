@@ -8,34 +8,37 @@
 
 class Player {
 public:
-    Player();
+    Player(); // Default constructor 
     
-    virtual ~Player();
+    virtual ~Player(); // Destructor 
 
+    // Set player name
     void setName(string name);
-
+    // Get player name
     string getName();
-
+    // Function to display board game when passing board as argument
     void display(char **board);
-
+    // Overloaded Function that places user's ships
     void placeShips();
-
+// Virtual Function that is overloaded, used for taking turns for the player/computer
     virtual void takeTurns(Player &opponent);
 
+    // Bool function to determine if there are any ships left on the board
     bool hasLost();
-
+    // Returns 2D array board
     char **getBoard() {
         return board.getGrid();
     }
-    
+    // Recursive function that searches through array indices instead of iterating with for loops
     void searchIndx(char**& board, int row, int col, char target);
     
+    // Function that will show user Computer's ships coordinates if they need a hint
     void showHint();
 
 protected:
-    string name;
-    Board board;
-    Ship ship;
+    string name; // Player name
+    Board board; // Player has a board, aggregated
+    Ship ship;   // Player has ships, aggregated
 };
 
 #endif /* PLAYER_H */

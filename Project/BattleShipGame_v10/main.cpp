@@ -1,6 +1,6 @@
 /*  File:   main.cpp
  * Author: Noel Perez
- * Created on October 29, 2023, 9:13 PM
+ * Created on October 20, 2023, 9:13 PM
  */
 #include <cstdlib>
 #include <string>
@@ -16,10 +16,12 @@
 
 using namespace std;
 
+// Function to clear screen
 void clearScreen() {
     cout << "\033c";
 }
 
+// Function to clear screen with user input for choice
 void clearScreenChoice() {
     char choice = 0;
     cout << "\n";
@@ -47,8 +49,9 @@ int main(int argc, char** argv) {
     // Deque with Random access iterator to get file stream
     deque<char> text((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
 
-    int choice = 0;
+    int choice = 0; // Variable used for user input
 
+    // Display menu
     while (choice != 3) {
         cout<<endl;
         cout << "Menu:" << endl;
@@ -58,11 +61,12 @@ int main(int argc, char** argv) {
         cout << "Enter your choice: ";
         cin >> choice;
 
+        // Input validation for menu options
         if (cin.fail()) {
             cout << "Invalid input. Please enter a valid number." << endl;
             cin.clear();
             cin.ignore(100, '\n');
-            
+         // Choice 1 from menu   
         } else if (choice == 1) {
             // Display the rules in stored in a .txt file 
             cout << endl;
@@ -70,14 +74,16 @@ int main(int argc, char** argv) {
                 cout << words;
             }
             cout << '\n';
-            clearScreenChoice();
+            clearScreenChoice(); // clear screen
+         // Choice 2 from menu
         } else if (choice == 2) {
-            Coordinates c;
-            Game game;
-            game.setupGame();
-            game.playGame();
-            c.getAllCoords().clear();
-        } else if (choice == 3) {
+            Coordinates c; // Declare Coordinates object that resets each game
+            // Declare Game object so that it resets if user chooses to play multiple games
+            Game game;    
+            game.setupGame(); // Setup game with both player's boards
+            game.playGame(); // Start game 
+            c.getAllCoords().clear(); // Clear Coordinates after each game
+        } else if (choice == 3) { // Quit
             cout << "Goodbye!" << endl;
         } else {
             cout << "Invalid choice. Please enter a number between 1 and 3." << endl;

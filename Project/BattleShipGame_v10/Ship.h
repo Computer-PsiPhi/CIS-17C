@@ -14,14 +14,14 @@
 class Ship {
 public:
 
-    Ship();
-    Ship(const Coordinates& orig);
+    Ship(); // Defualt constructor 
+    Ship(const Coordinates& orig); // Copy constructor passing in Coordiinates object 
 
-    virtual ~Ship();
+    virtual ~Ship(); // Destructor 
 
-    int Hits();
+    int Hits(); // Function that returns ship's hits
 
-    // add ship position to coordinates class    
+    // Add ship position to coordinates class    
     void setPostion();
 
     // Get ship length
@@ -38,30 +38,31 @@ public:
 
     // Add elements to unordered_map 
     void addToUnMap(int k, char r, int c);
-
+    
+    // Function to add orientation to map that holds ships
     void addToMapNO(int k, char o);
 
-    // for ship <size,symbol>
+    // Function for displaying ship <size,symbol>
     void displayMap(map<int, pair<int, char>>&map);
 
-    // for ship<char row, int col>
+    // Function for displaying ship<char row, int col>
     void displayUnMap(unordered_map<int, pair<char, int>>&map);
 
     // Display ship name and orientation <string name, char orientation>
     void displayMapNO(map<int, pair<string, char>>&map);
 
-    // Function 
+    // Function to insert coordinates to each map value which is a ship
     void insertCoord(int k, char row, int col, int s);
-
+    // Bool function that checks if there is a ship at the key value passed in with coordinates
     bool isShipAtCoord(int key, char row, int col) const;
 
-    // Function 
+    // Function returns coordinates based on map key passed in
     set<pair<char, int>>&getCoordinates(int key);
 
-    // Function
+    // Function that returns the 2D map with the map of ships' coordinates
     unordered_map<int, set<pair<char, int>>>& getShipCoords();
 
-    // Function 
+    // Function to print all coordinates stored in 2D map 
     void printShipCoords();
 
 private:
@@ -69,10 +70,10 @@ private:
     // 2D MAP for ship type and coordinates
     unordered_map<int, set<pair<char, int>> > shipCoords;
 
-    // Map for ship length and symbol
+    // 2D Map for ship length and symbol
     map<int, pair<int, char>> ships;
 
-    // Map for ship name and orientation
+    // 2D Map for ship name and orientation
     map<int, pair<string, char>> shipNO;
 
     //Aircraft Carrier (occupies 5 spaces), Battleship (4), Cruiser (3), Submarine (3), and Destroyer (2).   

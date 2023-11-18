@@ -14,13 +14,13 @@ using namespace std;
 
 class Coordinates {
 private:
-    char row;
-    int col;
+    char row; // Row coordinate
+    int col;  // Column coordinate
 
 public:
-    Coordinates();
-    Coordinates(char row, int col);
-    virtual ~Coordinates();
+    Coordinates(); // Default constructor
+    Coordinates(char row, int col); // 2 arg. Constructor 
+    virtual ~Coordinates(); // Destructor 
 
     //Structure with comparison operator for comparing sets and user input
     struct CompareCoordinates {
@@ -34,10 +34,8 @@ public:
     char getRow() const;
     // Get set row
     void setRow(char r);
-
     // Getter function for col
     int getCol() const;
-
     // Setter function for col
     void setCol(int c);
 
@@ -53,28 +51,28 @@ public:
     // Static function to check if user input is in set
     static bool inputInSet(char userRow, int userCol);
 
-    // Static method to get all rows in set      
+    // Static method to get all rows in set, uses iterator to traverse set     
     static set<char> getAllRows() {
-        set<char> rows;
+        set<char> rows; 
         for (set<pair<char, int>>::iterator it = getAllCoords().begin(); it != getAllCoords().end(); ++it) {
-            rows.insert(it->first);
+            rows.insert(it->first); 
         }
-        return rows;
+        return rows; // return set from function
     }
 
-    //Static method to get all columns in set
+    //Static method to get all columns in set, traverse set with iterator
     static set<int> getAllColumns() {
         set<int> columns;
         for (set<pair<char, int>>::iterator it = getAllCoords().begin(); it != getAllCoords().end(); ++it) {
             columns.insert(it->second);
         }
-        return columns;
+        return columns; // return column set 
     }
 
     // Static function named that returns a reference to the set of pairs.
     static set<pair<char, int>, CompareCoordinates>& getAllCoords() {
         static set<pair<char, int>, CompareCoordinates> allCoordinates;
-        return allCoordinates;
+        return allCoordinates; 
     }
 };
 

@@ -26,7 +26,7 @@ public:
     char** getGrid();
 
 private:
-    char** Grid; // Member varialbe for 2d array that is used to make board
+    char** Grid; // Member variable for 2d array that is used to make board
     Ship ship;  // Board has ships
 };
 

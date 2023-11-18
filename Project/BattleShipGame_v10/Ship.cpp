@@ -5,26 +5,27 @@
 #include "Ship.h"
 
 //Aircraft Carrier (occupies 5 spaces), Battleship (4), Cruiser (3), Submarine (3), and Destroyer (2).  
-
+// Default constructor: set ship hits to 0 and map key value pair to default values 
 Ship::Ship() {
-    hits=0;
+    hits=0; // Hits should be 0 to start
+    // 2D map with ship size and symbols are known at start
     ships[0] = make_pair(2, 'D');
     ships[1] = make_pair(3, 'S');
     ships[2] = make_pair(3, 'C');
     ships[3] = make_pair(4, 'B');
     ships[4] = make_pair(5, 'A');
-
+// 2D map with ships' names and potential orientations
     shipNO[0] = make_pair(names[0], 'X');
     shipNO[1] = make_pair(names[1], 'X');
     shipNO[2] = make_pair(names[2], 'X');
     shipNO[3] = make_pair(names[3], 'X');
     shipNO[4] = make_pair(names[4], 'X');
 }
-
+// All ships have coordinates
 Ship::Ship(const Coordinates& orig) {
     Coordinates();
 }
-
+// Destructor 
 Ship::~Ship() {
 }
 
@@ -42,7 +43,7 @@ int::Ship::Hits() {
    return hits; 
 }
 
-// Set user position 
+// Set user position for ship
 void::Ship::setPostion() {
     Coordinates::getUserInput();
 }
@@ -53,23 +54,22 @@ int::Ship::getShipLenght(int k) {
     return temp[k].first;
 }
 
-// Return map that holds ship length and symbol
+// Return 2D map that holds ship length and symbol
 map<int, pair<int, char>>&::Ship::getShips() {
     return ships;
 }
 
-// Return map that holds ship name and orientation 
+// Return 2D map that holds ship name and orientation 
 map<int, pair<string, char>>&::Ship::getShipNO() {
     return shipNO;
 }
 
-// Add orientation to ship by name 
+// Add orientation to ship by name in corresponding 2D map 
 void::Ship::addToMapNO(int k, char o) {
-
     shipNO[k] = make_pair(names[k], o);
 }
 
-// Displays map with ship length and symbol 
+// Displays 2D map with ship length and symbol 
 void::Ship::displayMap(map<int, pair<int, char>>&map) {
     for (int i = 0; i < 5; i++) {
         cout << ships[i].first;
@@ -85,8 +85,11 @@ void::Ship::displayMapNO(map<int, pair<string, char>>&map) {
     }
 }
 
-// Function to insert a set pair which are coordinates
-// k = key , row = board row, col = board col, s = ship size
+/*
+ Function to insert a set pair which are coordinates in 2D map with
+ appropriate ship length. Checks that number of coordinates match with ship length 
+ k = key , row = board row, col = board col, s = ship size
+ */
 void::Ship::insertCoord(int k, char row, int col, int s) {
     // Check if ship size exceeds the maximum 
     int Size = shipCoords[k].size();
@@ -98,17 +101,17 @@ void::Ship::insertCoord(int k, char row, int col, int s) {
     }
 }
 
-// Function returns map key 
+// Function returns 2D map key of ships coordinates
 set<pair<char, int>>&::Ship::getCoordinates(int key) {
     return shipCoords[key];
 }
 
-// Function returns map with set of pairs with ships coordinates
+// Function returns 2D map with set of pairs with ships coordinates
 unordered_map<int, set<pair<char, int>>>&::Ship::getShipCoords() {
     return shipCoords;
 }
 
-// Displays all ships coordinates
+// Displays all ships coordinates using iterators
 void::Ship::printShipCoords() {
     for (unordered_map<int, set<pair<char, int>>>::iterator iter = shipCoords.begin(); iter != shipCoords.end(); iter++) {
         cout<<"\n";
@@ -121,7 +124,7 @@ void::Ship::printShipCoords() {
     }
 }
 
-// Function to check if ship is at the given coordinates 
+// Boolean Function to check if ship is at the given coordinates 
 bool::Ship::isShipAtCoord(int key, char row, int col) const {
     const set<pair<char, int>>&coordSet = shipCoords.at(key);
     return coordSet.find(make_pair(row, col)) != coordSet.end();

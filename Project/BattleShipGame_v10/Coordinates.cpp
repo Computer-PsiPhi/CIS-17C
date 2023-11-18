@@ -25,11 +25,11 @@ char::Coordinates::getRow() const {
 void::Coordinates::setRow(char r) {
     row = r;
 }
-// Getter function for col
+// Getter function for column
 int::Coordinates::getCol() const {
     return col;
 }
-// Setter function for col
+// Setter function for column
 void::Coordinates::setCol(int c) {
     col = c;
 }
@@ -56,8 +56,8 @@ void::Coordinates::getUserInput() {
     // Add the entered coordinates to the set
     addCoordsToSet(userRow, userCol);
 }
-// Static  bool function to check if user input is in set
+// Static bool function to check if user input is in set
 bool::Coordinates::inputInSet(char userRow, int userCol) {
-    return getAllCoords().find(std::make_pair(userRow, userCol)) != getAllCoords().end();
+    return getAllCoords().find(make_pair(userRow, userCol)) != getAllCoords().end();
 }
 

@@ -14,18 +14,20 @@
 #include <cstdio>
 class Game {
 public:
-    Game();
-    Game(const Game& orig);
-    virtual ~Game();
+    Game(); // Default constructor 
+    
+    virtual ~Game(); // destructor 
 
-    void displayBoards();
+    // Function that sets up game with player's ships
     void setupGame();
+    // Function that is used to play game 
     void playGame();
+    // Function used to pause console output
     void pause(); 
 
 private:
-    Player player;
-    Computer computer;
+    Player player; // Player object aggregation 
+    Computer computer; // Computer object aggregation
 };
 
 #endif /* GAME_H */
