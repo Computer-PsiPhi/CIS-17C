@@ -3,10 +3,9 @@
  * Created on October 29, 2023, 9:16 PM
  */
 #include "Board.h"
-
+// Default constructor
 Board::Board() {
- 
-        Grid = new char*[B_SIZE];
+        Grid = new char*[B_SIZE]; // Dynamically create 2D array 
         for (int i = 0; i < B_SIZE; ++i) {
             Grid[i] = new char[B_SIZE];
             for (int j = 0; j < B_SIZE; ++j) {
@@ -14,23 +13,21 @@ Board::Board() {
             }
         }
 }
-
-Board::Board(const Ship& orig){
-}
-
+// Destructor 
 Board::~Board() {
+    // Release dynamically allocated memory for 2d array board
         for (int i = 0; i < B_SIZE; ++i) {
             delete[] Grid[i];
         }
         delete[] Grid;
 }
 
-// Function 
+// Function that returns 2D pointer that is the Grid for the board
 char**::Board::getGrid() {
         return Grid;
     }
 
-// Function 
+// Function to display board 
 void::Board::displayBoard(){
         cout<<"\n";
     for(int j = 0 ; j < B_SIZE ; j++){ // Column numbers
@@ -45,10 +42,11 @@ void::Board::displayBoard(){
         }
     }
 }
-// Function 
+// Function to determine of placement of ships is valid
+// Checks to make sure no ships overlap or go over board edge
 bool::Board::isValidPlacement( char **Grid, int r, int c ,char o, int size){
-    
-    if(o == 'H' || o == 'h'){
+  // Check board to make sure there are no ships, if orientation is horizontal 
+    if(o == 'H' || o == 'h'){   
         for(int i =c; i< c +size; i++){
             if(i >= B_SIZE || Grid[r][i] =='A'){
                return false;
@@ -67,9 +65,8 @@ bool::Board::isValidPlacement( char **Grid, int r, int c ,char o, int size){
             }
         }  
     }
-    else{
+    else{ // Check board to make sure there are no ships, if orientation is vertical
         for(int j = r; j<  r+size; j++){
-            
             if(j >= B_SIZE || Grid[j][c] == 'A'){
                return false;
             }

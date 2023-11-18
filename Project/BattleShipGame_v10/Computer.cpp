@@ -2,7 +2,6 @@
  * Author: Noel Perez
  * Created on November 1, 2023, 6:34 PM
  */
-
 #include "Computer.h"
 #include <ctime>
 
@@ -11,8 +10,6 @@ Computer::Computer() {
     randomChoice = rand() % 15;
 }
 
-Computer::Computer(const Computer& orig) {
-}
 
 Computer::~Computer() {
 }
@@ -131,7 +128,7 @@ void::Computer::placeShips() {
     while (t < randomChoice) {
         randRow.pop();
         randCol.pop();
-        it++;
+       // it++;
         t++;
     }
 
@@ -147,7 +144,6 @@ void::Computer::placeShips() {
         map<int, pair<int, char>> &itr = Computer::ship.getShips();
         map<int, pair<string, char>> &itr2 = Computer::ship.getShipNO();
 
-        cout << endl;
         cout << "\nPlacing " << itr2[i].first << " length " << itr[i].first << " ship.\n";
        // cin >> r>>y;
         r = toupper(r);
@@ -157,7 +153,6 @@ void::Computer::placeShips() {
         // Keep prompting until a valid input is provided
         while (true) {
             direction = toupper(direction);
-
             // Check if the input is valid
             if (direction == 'H' || direction == 'V') {
                 break; // Exit the loop if valid input is received
@@ -208,6 +203,8 @@ void::Computer::placeShips() {
             direction = *it;
             // cin >> r>>y;
             r = toupper(r);
+        
+            cout<<endl;
             x = r - 'A';
             y = y;
             //  cout << "Enter direction (H for horizontal, V for vertical): ";
@@ -217,15 +214,16 @@ void::Computer::placeShips() {
         for (int j = 0; j < itr[i].first; j++) {
             if (direction == 'H' || direction == 'h') {
                 compBoard[x][y + j] = itr[i].second;
+                Coordinates::addCoordsToSet(r,y+j);
                 //    s.insertCoord(i,r,y+j,itr[i].first);
-                //   s.printShipCoords();
             } else if (direction == 'V' || direction == 'v') {
                 compBoard[x + j][y] = itr[i].second;
+                Coordinates::addCoordsToSet(r+j,y);
                 //    s.insertCoord(i,r+j,y,itr[i].first);
             }
         } // for loop 79
     }// for loop 52
-    board.displayBoard(); // Display after setting
+    board.displayBoard(); // Display after Computer sets board. Un-comment to see Computer Board
     cout << endl;
 }
 
@@ -262,7 +260,7 @@ void::Computer::takeTurns(Player &opponent) {
 
     if (board[x][y] == 'A') {
         cout << "\nIt's a hit!\n";
-        cout<<itr2[4].first<<", length"<<itr[4].first<<" is sunk!"<<endl;
+        cout<<itr2[4].first<<" is sunk!"<<endl;
         hits = Player::ship.Hits();
         for(int i=0; i<B_SIZE; i++){
             for(int j=0; j<B_SIZE; j++){
@@ -271,10 +269,10 @@ void::Computer::takeTurns(Player &opponent) {
                 }
             }
         }
-        //opponent.ship.isShipAtCoord(i,r,y) = 'X';
+  
     } else if (board[x][y] == 'B') {
         cout << "\nIt's a hit!\n";
-        cout<<itr2[3].first<<", length"<<itr[3].first<<" is sunk!"<<endl;
+        cout<<itr2[3].first<<" is sunk!"<<endl;
         hits = Player::ship.Hits();
         for(int i=0; i<B_SIZE; i++){
             for(int j=0; j<B_SIZE; j++){
@@ -285,7 +283,7 @@ void::Computer::takeTurns(Player &opponent) {
         }
     } else if (board[x][y] == 'C') {
         cout << "\nIt's a hit!\n";
-        cout<<itr2[2].first<<", length "<<itr[2].first<<" is sunk!"<<endl;
+        cout<<itr2[2].first<<" is sunk!"<<endl;
         hits = Player::ship.Hits();
         for(int i=0; i<B_SIZE; i++){
             for(int j=0; j<B_SIZE; j++){
@@ -296,7 +294,7 @@ void::Computer::takeTurns(Player &opponent) {
         }
     } else if (board[x][y] == 'D') {
         cout << "\nIt's a hit!\n";
-         cout<<itr2[0].first<<", length "<<itr[0].first<<" is sunk!"<<endl;
+         cout<<itr2[0].first<<" is sunk!"<<endl;
            for(int i=0; i<B_SIZE; i++){
             for(int j=0; j<B_SIZE; j++){
                 if(board[i][j] == 'D'){
@@ -306,7 +304,7 @@ void::Computer::takeTurns(Player &opponent) {
         }
     } else if (board[x][y] == 'S') {
         cout << "\nIt's a hit!\n";
-        cout<<itr2[1].first<<", length "<<itr[1].first<<" is sunk!"<<endl;
+        cout<<itr2[1].first<<" is sunk!"<<endl;
         hits = Player::ship.Hits();
         for(int i=0; i<B_SIZE; i++){
             for(int j=0; j<B_SIZE; j++){
@@ -319,6 +317,5 @@ void::Computer::takeTurns(Player &opponent) {
         cout << "\nIt's a miss.\n";
         board[x][y] = 'O';
     }
-   
    // opponent.display(board);
 }

@@ -29,6 +29,8 @@ public:
     }
     
     void searchIndx(char**& board, int row, int col, char target);
+    
+    void showHint();
 
 protected:
     string name;

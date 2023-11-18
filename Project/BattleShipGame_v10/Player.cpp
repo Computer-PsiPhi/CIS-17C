@@ -40,7 +40,7 @@ void::Player::display(char **board) {
 }
 
 void::Player::placeShips() {
-    cout << name << ", Place your ships!" << endl;
+    cout<<"\n" << name << ", Place your ships!" << endl;
     // MOVE BACK TO 5!
     for (int i = 0; i < 1; i++) {
         int x, y;
@@ -103,8 +103,7 @@ void::Player::placeShips() {
                 } else {
                     cout << "Invalid input. Please enter 'H' or 'V'." << endl;
                 }
-                // Clear the input buffer
-                cin.clear();
+                cin.clear();  // Clear the input buffer
             }
         }
 // Check if ship placement is valid: not overlapping or over the board edge
@@ -170,6 +169,8 @@ void::Player::takeTurns(Player &opponent) {
     char **board = opponent.board.getGrid();
     map<int, pair<int, char>> &itr = Player::ship.getShips();
     map<int, pair<string, char>> &itr2 = Player::ship.getShipNO();
+    
+    showHint();
    
     cout << "\nEnter attack coordinates (e.g., A3): ";
 
@@ -210,7 +211,7 @@ void::Player::takeTurns(Player &opponent) {
         board[x][y] = 'O';
     }
 }
-
+// Recursive function to check indices of 2D array 
 void::Player::searchIndx(char**& board, int row, int col, char target) {
     // Base case: Check if we've reached beyond the array bounds
     if (row >= B_SIZE) {
@@ -219,11 +220,7 @@ void::Player::searchIndx(char**& board, int row, int col, char target) {
     // Check if the character matches the target character
     if (board[row][col] == target) {
         // cout << "Character '" << target << "' found at [" << row << "][" << col << "]." << endl;
-        for (int i = 0; i < B_SIZE; i++) {
-            for (int j = 0; j < B_SIZE; j++) {
-                board[row][col] = 'X';
-            }
-        }
+         board[row][col] = 'X';
     }
     // Check the next index
     if (col + 1 < B_SIZE) {
@@ -232,3 +229,24 @@ void::Player::searchIndx(char**& board, int row, int col, char target) {
         searchIndx(board, row + 1, 0, target); // Move to the next row
     }
 }
+
+void::Player::showHint(){
+ char userInput;
+
+    while (true) {
+        cout<<"Would you like a hint? "<<endl;
+        cout << "Please enter 'y' or 'n': ";
+        cin >> userInput;
+        userInput = toupper(userInput); // Convert to upppercase
+        cin.ignore(100,'\n');
+        
+        if (userInput == 'Y' ){
+            cout<<"Computer's ship coordinates: "<<endl;
+            Coordinates::printCoords();
+            break;
+        } else {
+            return;
+        }
+    }
+}
+

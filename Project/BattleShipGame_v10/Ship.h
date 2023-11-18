@@ -15,8 +15,6 @@ class Ship {
 public:
 
     Ship();
-    // Ship(Coordinates& position);
-
     Ship(const Coordinates& orig);
 
     virtual ~Ship();

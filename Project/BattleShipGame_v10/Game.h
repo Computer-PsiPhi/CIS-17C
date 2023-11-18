@@ -10,7 +10,8 @@
 #include "Computer.h"
 #include "Coordinates.h"
 #include "Ship.h"
-
+#include <iostream>
+#include <cstdio>
 class Game {
 public:
     Game();
@@ -20,6 +21,7 @@ public:
     void displayBoards();
     void setupGame();
     void playGame();
+    void pause(); 
 
 private:
     Player player;

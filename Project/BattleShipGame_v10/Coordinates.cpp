@@ -5,20 +5,16 @@
 #include "Coordinates.h"
 
 // Coordinates Class 
-
 Coordinates::Coordinates() {
 }
 // Two-parameter constructor 
-
 Coordinates::Coordinates(char row, int col) {
     this->row = row;
     this->col = col;
     getAllCoords().insert(make_pair(row, col));
 }
 
-Coordinates::Coordinates(const Coordinates& orig) {
-}
-// Desstructor
+// Destructor
 Coordinates::~Coordinates() {
 }
 // Get row
@@ -50,11 +46,10 @@ void::Coordinates::addCoordsToSet(char row, int col) {
 }
 // Function to get user input for coordinates and add to the set
 void::Coordinates::getUserInput() {
-    char userRow;
+    char userRow; // variables for user input
     int userCol;
     cout << "Enter row (A-Z): ";
     cin >> userRow;
-
     cout << "Enter column (1-9): ";
     cin >> userCol;
 

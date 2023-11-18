@@ -20,21 +20,19 @@ private:
 public:
     Coordinates();
     Coordinates(char row, int col);
-    Coordinates(const Coordinates& orig);
     virtual ~Coordinates();
 
     //Structure with comparison operator for comparing sets and user input
-
     struct CompareCoordinates {
         // bool operator function to compare pairs that make up sets
-
         bool operator()(const pair<char, int>& lhs, const pair<char, int>& rhs) const {
             return (lhs.first < rhs.first) || ((lhs.first == rhs.first) && (lhs.second < rhs.second));
         }
     };
 
+    // Get row from user
     char getRow() const;
-
+    // Get set row
     void setRow(char r);
 
     // Getter function for col
@@ -48,7 +46,7 @@ public:
 
     // Static member function to add coordinates to the set 
     static void addCoordsToSet(char row, int col);
-
+    
     // Function to get user input for coordinates and add to the set
     static void getUserInput();
 
@@ -66,11 +64,8 @@ public:
 
     //Static method to get all columns in set
     static set<int> getAllColumns() {
-
         set<int> columns;
-
         for (set<pair<char, int>>::iterator it = getAllCoords().begin(); it != getAllCoords().end(); ++it) {
-
             columns.insert(it->second);
         }
         return columns;

@@ -17,7 +17,6 @@
 class Computer : public Player {
 public:
     Computer();
-    Computer(const Computer& orig);
     virtual ~Computer();
 
     // Function   
