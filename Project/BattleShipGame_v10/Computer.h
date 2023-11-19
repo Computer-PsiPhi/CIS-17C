@@ -32,9 +32,6 @@ public:
 
     // Overloaded function for taking turn depending on player type
     void takeTurns(Player &opponent); 
-    
-    // Recursive function for traversing 2D array indices
-    void searchIndx(char**& board, int row, int col, char target);
 
 private:
     int randomChoice; // Computer simulation of random choice
