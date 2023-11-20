@@ -13,6 +13,10 @@ Board::Board() {
             }
         }
 }
+// Copy constructor
+Board::Board(const Ship& orig){
+    this->ship=orig;
+}
 // Destructor 
 Board::~Board() {
     // Release dynamically allocated memory for 2d array board
