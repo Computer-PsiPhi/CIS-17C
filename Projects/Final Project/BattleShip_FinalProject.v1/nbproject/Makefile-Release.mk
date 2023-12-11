@@ -35,11 +35,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/BinarySearchTree.o \
 	${OBJECTDIR}/Board.o \
 	${OBJECTDIR}/Computer.o \
 	${OBJECTDIR}/Coordinates.o \
 	${OBJECTDIR}/Game.o \
 	${OBJECTDIR}/Player.o \
+	${OBJECTDIR}/Scoreboard.o \
 	${OBJECTDIR}/Ship.o \
 	${OBJECTDIR}/main.o
 
@@ -68,6 +70,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/battleship_finalproject.v1.exe: ${OBJ
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/battleship_finalproject.v1 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/BinarySearchTree.o: BinarySearchTree.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BinarySearchTree.o BinarySearchTree.cpp
+
 ${OBJECTDIR}/Board.o: Board.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -92,6 +99,11 @@ ${OBJECTDIR}/Player.o: Player.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Player.o Player.cpp
+
+${OBJECTDIR}/Scoreboard.o: Scoreboard.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Scoreboard.o Scoreboard.cpp
 
 ${OBJECTDIR}/Ship.o: Ship.cpp
 	${MKDIR} -p ${OBJECTDIR}
