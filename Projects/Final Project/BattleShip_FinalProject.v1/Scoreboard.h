@@ -40,8 +40,6 @@ public:
             
     }
 
-
-
     void displayScores() const {
     
         int maxPW = 0;
