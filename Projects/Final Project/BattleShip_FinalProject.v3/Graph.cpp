@@ -5,23 +5,26 @@
  */
 #include "Graph.h"
 
-NodeG*::Graph::findNode(const string& val) {
-    for (int i = 0; i < MAX_SIZE; ++i) {
-        if (vertices[i] != nullptr && vertices[i]->data == val) {
-            return vertices[i];
-        }
-    }
-    return nullptr;
-}
-
+// Default constructor 
 Graph::Graph() {
     for (int i = 0; i < MAX_SIZE; ++i) {
         vertices[i] = nullptr;
     }
 }
 
+// Function for finding the node where element passed is in the graph
+NodeG*::Graph::findNode(const string& val) {
+    for (int i = 0; i < MAX_SIZE; ++i) {
+        if (vertices[i] != nullptr && vertices[i]->data == val) {
+            return vertices[i];
+        }
+    }
+    return nullptr; // when not found 
+}
+
+// Function for adding vertex to graph 
 void::Graph::addVertex(const string& v) {
-    if (findNode(v) == nullptr) {
+    if (findNode(v) == nullptr) { // make sure empty, before we add it 
         for (int i = 0; i < MAX_SIZE; ++i) {
             if (vertices[i] == nullptr) {
                 vertices[i] = new NodeG(v);
@@ -30,12 +33,14 @@ void::Graph::addVertex(const string& v) {
         }
     }
 }
-
+// Function for adding an edge between two vertices: takes in the two vertices
+// and the corresponding weight between them
 void::Graph::addEdge(const string& v1, const string& v2, int weight) {
+    // Need to make sure both vertices exist before we can add an edge between them
     NodeG* nodeV1 = findNode(v1);
     NodeG* nodeV2 = findNode(v2);
 
-    if (nodeV1 && nodeV2) {
+    if (nodeV1 && nodeV2) { // if vertices exist make an edge 
         int index1 = nodeV1->numEdges;
         int index2 = nodeV2->numEdges;
 
@@ -46,11 +51,18 @@ void::Graph::addEdge(const string& v1, const string& v2, int weight) {
         nodeV2->edges[index2] = nodeV1;
         nodeV2->weights[index2] = weight;
         nodeV2->numEdges++;
-    } else {
-        cout << "Vertices not found." << endl;
+    } else { // if they dont exist
+        cout << "Vertices not found." << endl; 
     }
 }
 
+/*
+ * This graph represents a network of simulated matches between player through out the 
+ * history of the game: Each vertex is a player and the weight is the number of matches 
+ * they have had. It is an undirected weighted graph so the weights are the same both ways.
+ * 
+ * This is the display function for the graph with formatting 
+ */
 void::Graph::display() {
     cout << "\n\nGraph representation of player matches." << endl;
     cout << "Vertex vs Vertex : Weight is number of matches against each other\n" << endl;
@@ -68,7 +80,7 @@ void::Graph::display() {
         }
     }
 }
-
+// Destructor 
 Graph::~Graph() {
     for (int i = 0; i < MAX_SIZE; ++i) {
         if (vertices[i] != nullptr) {

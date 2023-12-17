@@ -6,9 +6,11 @@
 
 #include "Scoreboard.h"
 
+// Default constructor 
 Scoreboard::Scoreboard() {
 };
 
+// 3 parameter constructor that constructs object: used in main()
 Scoreboard::Scoreboard(const string names[], const int values[], int size) {
 
     currentSize = size;
@@ -19,9 +21,11 @@ Scoreboard::Scoreboard(const string names[], const int values[], int size) {
 
 }
 
+// Destructor
 Scoreboard::~Scoreboard() {
 };
 
+// Function for: Display the scoreboard object with formatting
 void::Scoreboard::displayScores() const {
 
     int maxPW = 0;
@@ -39,7 +43,7 @@ void::Scoreboard::displayScores() const {
     }
 
     // table padding
-    const int padding = 5; // Padding between columns
+    const int padding = 5; 
     int totalW = maxPW + maxSW + padding;
 
     // table header
@@ -53,7 +57,9 @@ void::Scoreboard::displayScores() const {
     }
 }
 
+// Function definition: merge auxiliary function for Recursive MergeSort function 
 void::Scoreboard::merge(string names[], int scores[], int low, int mid, int high) {
+    // split into 2 halves 
     int n1 = mid - low + 1;
     int n2 = high - mid;
 
@@ -100,15 +106,17 @@ void::Scoreboard::merge(string names[], int scores[], int low, int mid, int high
     }
 }
 
+// Function : Recursive MergeSort function that uses auxiliary merge function 
 void::Scoreboard::mergeSort(string names[], int scores[], int low, int high) {
     if (low < high) {
-        int mid = low + (high - low) / 2;
-        mergeSort(names, scores, low, mid);
-        mergeSort(names, scores, mid + 1, high);
-        merge(names, scores, low, mid, high);
+        int mid = low + (high - low) / 2; // find middle 
+        mergeSort(names, scores, low, mid); // lower half
+        mergeSort(names, scores, mid + 1, high); // upper half
+        merge(names, scores, low, mid, high); // call aux.function()
     }
 }
 
+// Helper function that calls recursive merge sort 
 void::Scoreboard::sortScores() {
     mergeSort(players, scores, 0, currentSize - 1);
 }

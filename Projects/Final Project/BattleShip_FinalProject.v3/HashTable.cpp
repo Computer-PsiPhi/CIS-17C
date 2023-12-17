@@ -6,11 +6,13 @@
 
 #include "HashTable.h"
 
+// 1 Parameter constructor 
 HashTable::HashTable(int capacity) {
     this->capacity = capacity;
     table = new Node*[capacity]();
 }
 
+// DJB Hash Function 
 unsigned long int::HashTable::hashFunction(const string& key) {
     unsigned long int hash = 5381;
     for (char c : key) {
@@ -18,25 +20,25 @@ unsigned long int::HashTable::hashFunction(const string& key) {
     }
     return hash % capacity;
 }
-
+// Function for inserting hashed name into hashtable : hashed name and score are stored 
 void::HashTable::insert(const string& key, int value) {
     int index = hashFunction(key);
     Node* newNode = new Node(key, value);
 
-    if (table[index] == nullptr) {
-        table[index] = newNode;
+    if (table[index] == nullptr) { // make sure empty
+        table[index] = newNode;  // newNode has hash and its score
     } else {
-        Node* current = table[index];
+        Node* current = table[index]; // when collisions occur
         while (current->next != nullptr) {
             current = current->next;
         }
         current->next = newNode;
     }
 }
-
+// Search for the score of the key passed in 
 int::HashTable::search(const string& key) {
     int index = hashFunction(key);
-    Node* current = table[index];
+    Node* current = table[index]; // find the index of string key 
 
     while (current != nullptr) {
         if (current->key == key) {
@@ -46,7 +48,7 @@ int::HashTable::search(const string& key) {
     }
     return -1;
 }
-
+// Function for printing hashtable : Prints index, name and score
 void::HashTable::printHT() {
     for (int i = 0; i < capacity; ++i) {
         Node* current = table[i];
@@ -59,7 +61,7 @@ void::HashTable::printHT() {
         cout << endl;
     }
 }
-
+// Destructor for destroying hashtable 
 HashTable::~HashTable() {
     for (int i = 0; i < capacity; ++i) {
         Node* current = table[i];

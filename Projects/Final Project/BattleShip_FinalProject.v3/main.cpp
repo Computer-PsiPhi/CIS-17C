@@ -24,13 +24,11 @@
 using namespace std;
 
 // Function to clear screen
-
 void clearScreen() {
     cout << "\033c";
 };
 
 // Function to clear screen with user input for choice
-
 void clearScreenChoice() {
     char choice = 0;
     cout << "\n";
@@ -44,6 +42,7 @@ void clearScreenChoice() {
     cout << endl;
 };
 
+// Main function 
 int main(int argc, char** argv) {
 
     srand(static_cast<unsigned int> (time(0))); // Seed for random number generation
@@ -243,6 +242,7 @@ int main(int argc, char** argv) {
             bst.remove(num);                        // remove element user entered
             bst.displayTree();                      // display tree after removing element
             bst.displayDepth();                     // display depth after removing element 
+            cout << "Tree is balanced: " << bst.isBalanced() << endl; // display if balanced 
             clearScreenChoice();                // prompt to clear screen 
         } else if (choice == 7) { // Quit
             cout << "Goodbye!" << endl;
@@ -252,6 +252,7 @@ int main(int argc, char** argv) {
         cin.ignore(100, '\n'); // Clear the input buffer
     }
 
+    // clean up memory 
     delete[]values; 
     
     return 0;

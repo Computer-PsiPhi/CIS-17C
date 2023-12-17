@@ -8,6 +8,7 @@
 // Destructor 
 BinarySearchTree::~BinarySearchTree() {
 };
+
 // Default constructor 
 BinarySearchTree::BinarySearchTree() {
     root = nullptr;
@@ -31,6 +32,7 @@ void::BinarySearchTree::remove(int value) {
 
     }
 }
+
 // Function for searching if element is in tree: bool 
 bool::BinarySearchTree::search(int value) {
     Node* current = root;
@@ -50,22 +52,26 @@ bool::BinarySearchTree::search(int value) {
 int::BinarySearchTree::getHeight() {
     return calcHeight(root); // call private function 
 }
+
 // Helper function for checking if tree is balanced 
 bool::BinarySearchTree::isBalanced() {
     return isBalRec(root);
 }
+
 // Helper function for in-order display 
 void::BinarySearchTree::inorder() {
     cout << "In-Order traversal: ";
     inOrderRec(root);
     cout << endl;
 }
+
 // Helper function for in-order display  
 void::BinarySearchTree::preorder() {
     cout << "Pre-Order traversal: ";
     preOrderRec(root);
     cout << endl;
 }
+
 // Helper function for post-order display 
 void::BinarySearchTree::postorder() {
     cout << "Post-Order traversal: ";
@@ -83,6 +89,7 @@ void::BinarySearchTree::displayDepth() {
 
 // Function to insert scores from a file into the BST
 void::BinarySearchTree::loadFromFile(const string& filename) {
+    
     ifstream file(filename); // create file stream for insertion of values  
     if (!file.is_open()) { // make sure file stream is good to go 
         cerr << "Error opening file." << endl;
@@ -126,7 +133,7 @@ int*::BinarySearchTree::getValuesFromRoot() {
             }
         }
     }
-    delete [] values; // release memory 
+ 
     return values;
 }
 

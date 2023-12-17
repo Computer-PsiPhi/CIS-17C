@@ -42,13 +42,17 @@ void::Game::setupGame() {
     cout << endl << setw(7) << ' ' << "Press ENTER to continue: \n"; 
     cin.get();
 }
+
 // Function that is used to play game and take player turns
 // Creates two Player pointer object so they can swap turns
 void::Game::playGame() {
+    
     // Create a Player object pointer that is the user 
     Player* currentPlayer = &player; 
+    
     // Create a Player object pointer that is the computer
     Player* opponent = &computer;
+    
 // Loop while a winner has not been declared by boolean function condition 
     while (true) {
         cout << "\n"; // Following is simply displaying both players' boards on the scrreen during game play

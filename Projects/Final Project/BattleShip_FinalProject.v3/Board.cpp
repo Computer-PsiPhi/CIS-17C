@@ -3,6 +3,7 @@
  * Created on October 29, 2023, 9:16 PM
  */
 #include "Board.h"
+
 // Default constructor
 Board::Board() {
         Grid = new char*[B_SIZE]; // Dynamically create 2D array 

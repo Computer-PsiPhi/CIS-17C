@@ -250,6 +250,7 @@ void::Player::takeTurns(Player &opponent) {
         board[x][y] = 'O';
     }
 }
+
 // Recursive function to check indices of 2D array 
 void::Player::searchIndx(char**& board, int row, int col, char target) {
     // Base case: Check if we've reached beyond the array bounds
@@ -268,6 +269,7 @@ void::Player::searchIndx(char**& board, int row, int col, char target) {
         searchIndx(board, row + 1, 0, target); // Move to the next row
     }
 }
+
 // Function that shows the player a hint: shows computer's ship coordinates
 void::Player::showHint(){
  char userInput;
