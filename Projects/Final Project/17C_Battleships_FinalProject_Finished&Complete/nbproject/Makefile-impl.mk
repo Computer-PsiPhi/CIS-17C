@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=17C_FinalProject_Finished&Final
+PROJECTNAME=17C_Battleships_FinalProject_Finished&Complete
 
 # Active Configuration
 DEFAULTCONF=Debug
